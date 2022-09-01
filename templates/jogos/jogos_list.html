@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% load crispy_forms_tags %}
+
+{% block title %} Lista de Jogos {% endblock %}
+
+{% block main %}
+
+{% include 'mensagens.html' %}
+
+<br><nav class="navbar navbar-dark mynav">
+    <ul class="nav justify-content-start">
+        <a href="{% url 'perfil' %}" class="btn btn-primary btn-sm mybtn" title="Perfil">Perfil</a>
+    </ul>
+
+    <ul class="nav justify-content-center">
+        <h4 class="color">Jogos / {{ user.username }}</h4>
+    </ul>
+
+    <ul class="nav justify-content-end">
+        <a href="{% url 'logout' %}" class="btn btn-danger btn-sm mybtn" onclick="return confirm('Tem certeza que deseja sair?')">Sair</a>
+    </ul>
+</nav>
+<br>
+<center><table class="table-bordered mytable">
+    <thead class="theadcolor">
+        <tr>
+            <th>Jogo</th>
+            <th>Estilo</th>
+            <th>Imagem</th>
+            <th>Editar</th>
+            <th>Deletar</th>
+        </tr>
+    </thead>
+
+    <tbody class="tbodycolor">
+        <tr>
+            {% for jogo in object_list %}
+            <td>{{ jogo.nome_do_jogo }}</td>
+            <td>{{ jogo.estilo_do_jogo }}</td>
+            <td><a href="{% url 'imagem' jogo.pk %}" class="btn btn-success btn-sm" 
+                data-toggle="modal" data-target="#exampleModal{{ jogo.pk }}">
+                <i class="fa fa-picture-o" aria-hidden="true"></i></a>
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal{{ jogo.pk }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header mydiv">
+                                <h5 class="modal-title" id="exampleModalLabel">Imagem do jogo {{ jogo.nome_do_jogo }}</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span title="Fechar" aria-hidden="true">&times;</span></button>
+                            </div>
+                            <div class="modal-body mydiv">
+                                <form method="post" action="{% url 'imagem' jogo.pk %}">
+                                    {% csrf_token %}
+                                    <img src="{{ jogo.image_url|default_if_none:'/static/imagens/console-com-letras-de-jogos-sinal-de-neon-no-fundo-do-tijolo_1262-11854.webp' }}" 
+                                    style="max-width:290px" alt="" crossorigin="anonymous">
+                                </form>
+                            </div>
+                            <div class="modal-footer mydiv">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </td>
+
+            <td><a href="{% url 'editar' jogo.pk %}" class="btn btn-warning btn-sm">
+                <i class="fa fa-edit" aria-hidden="true"></i></a></td>
+            
+            <td><a href="{% url 'deletar' jogo.pk %}" class="btn btn-danger btn-sm"
+                data-toggle="modal" data-target="#exampleModal3{{ jogo.pk }}">
+                <i class="fa fa-trash-o" aria-hidden="true"></i></a>
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal3{{ jogo.pk }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header mydiv">
+                                <h5 class="modal-title" id="exampleModalLabel">Deletar {{ jogo.nome_do_jogo }}?</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span title="Fechar" aria-hidden="true">&times;</span></button>
+                            </div>
+                            <div class="modal-body mydiv">
+                                <form method="POST" action="{% url 'deletar' jogo.pk %}" enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                    <img src="{{ jogo.image_url|default_if_none:'/static/imagens/console-com-letras-de-jogos-sinal-de-neon-no-fundo-do-tijolo_1262-11854.webp' }}"
+                                    style="max-width:290px" alt="" crossorigin="anonymous">
+                            </div>
+                            <div class="modal-footer mydiv">
+                                <button type="submit" class="btn btn-danger btn-sm mymodalbutton">Deletar</button>
+                                <a href="{% url 'lista_jogos' %}" class="btn btn-primary btn-sm mx-2">Voltar</a>
+                            </div></form>
+                        </div>
+                    </div>
+                </div>
+            </td>
+        </tr>{% endfor %}
+    </tbody>
+</table></center>
+<br>
+<center><a href="{% url 'novo' %}" class="btn btn-primary btn-sm">Adicionar Jogo</a></center>
+
+{% endblock %}

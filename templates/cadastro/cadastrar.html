@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title %} Cadastrar Novo Usuario {% endblock %}
+
+{% block main %}
+
+{% include 'mensagens.html' %}
+
+<div class="form-content my-2">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card shadow-lg border-1 rounded-lg mt-lg-2 mb-lg-2">
+                    <div class="card-header justify-content-center mycardheader">
+                        <h3 class="font-weight-dark text-center">Cadastrar Novo Usuário</h3>
+                    </div>
+                    <div class="card-body mybody">
+                        <form action="{% url 'cadastrar' %}" method="POST" autocomplete="off">
+                            {% csrf_token %}
+                            {{ form|crispy }}
+                            <center><button type="submit" class="btn btn-primary mx-3">Cadastrar</button>
+                            <a href="{% url 'login' %}" class="btn btn-info mx-3">Voltar</a></center>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

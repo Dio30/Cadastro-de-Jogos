@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title %} Login {% endblock %}
+
+{% block main %}
+
+{% include 'mensagens.html' %}
+
+<div class="form-content my-4">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <div class="card shadow-lg border-1 rounded-lg my-4">
+                    <div class="card-header justify-content-center mycardheader">
+                        <h2 class="font-weight-dark text-center">Login | Jogos</h2>
+                    </div>
+                    <div class="card-body mybody">
+                        <form action="." method="POST" autocomplete="off">
+                            {% csrf_token %}
+                            {{ form|crispy }}
+                            <center><button type="submit" class="col-md-4 btn btn-primary">Entrar</button></center>
+                            <br>
+                            <center>Não tem uma conta? <a href="{% url 'cadastrar' %}">Cadastre-se aqui</a>.</center>
+                            <input type="hidden" name="next" value="{{ next }}">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

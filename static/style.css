@@ -24,11 +24,6 @@ body{
     font-weight: bold;
 }
 
-.text-muted{
-    font-size: 100%;
-    font-weight: bold;
-}
-
 .mynav{
     backdrop-filter: blur( 3.5px );
     -webkit-backdrop-filter: blur( 13.5px );
@@ -94,6 +89,15 @@ body{
 }
 
 .myimg{
-    border-radius: 2rem;
+    border-radius: 5rem;
     border: #000000 2px solid;
+    background: #bfbfbf;
+}
+
+.mytext{
+    color:#e41010;
+}
+
+.text_muted2{
+    color:#000000
 }

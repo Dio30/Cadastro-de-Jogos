@@ -19,7 +19,43 @@
                     <div class="card-body mybody">
                         <form action="{% url 'cadastrar' %}" method="POST" autocomplete="off">
                             {% csrf_token %}
-                            {{ form|crispy }}
+                            <u>Itens com * são obrigatórios</u>
+                            <br><br>
+                            <div class="form-label-group">
+                                <label for="inputUser" class="text_muted2">Usuário*</label>
+                                <input type="text" name="username" minlength="3" class="form-control" id="inputUser" spellcheck="off" 
+                                placeholder="Insira um nome de usuário válido" autofocus required>
+                                <font class='mytext'>{{ form.username.errors }}</font>
+                                <font class="text-muted2">Obrigatório 3 caracteres ou mais. Letras, números e @/./+/-/_ apenas.
+                            </div>
+                            <br>
+                            <div class="form-label-group">
+                                <label for="inputUser" class="text_muted2">Email</label>
+                                <input type="email" name="email" class="form-control" id="inputUser" placeholder="Insira um email válido">
+                                <font class='mytext'>{{ form.email.errors }}</font>
+                                <font class="text-muted2">Insira um email valido. Ex: exemplo@exemplo.com</font>
+                            </div>
+                            <br>
+                            <div class="form-label-group">
+                                <label for="inputUser" class="text_muted2">Senha*</label>
+                                <input type="password" name="password1" class="form-control" id="inputUser" 
+                                placeholder="Insira uma senha válida" required>
+                                <ul class="text-muted2">
+                                    <li>Sua senha não pode ser muito parecida com o nome do usuário.</li>
+                                    <li>Sua senha precisa conter pelo menos 8 caracteres.</li>
+                                    <li>Sua senha não pode ser uma senha comumente utilizada. Ex: aaa, bbb, 1234..., etc.</li>
+                                    <li>Sua senha não pode ser inteiramente numérica, use letras juntamente de números ou 
+                                    caracteres especiais como @/./+/-/_</li>
+                                </ul>
+                            </div>
+                            <br>
+                            <div class="form-label-group">
+                                <label for="inputUser" class="text_muted2">Confirmar Senha*</label>
+                                <input type="password" name="password2" class="form-control" id="inputUser" 
+                                placeholder="Confirme sua senha" required>
+                                <p class="text_muted2">Informe a mesma senha informada anteriormente, para verificação.</p>
+                                <font class='mytext'>{{ form.password2.errors }}</font>
+                            </div>
                             <center><button type="submit" class="btn btn-primary mx-3">Cadastrar</button>
                             <a href="{% url 'login' %}" class="btn btn-info mx-3">Voltar</a></center>
                         </form>

@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% load crispy_forms_tags %}
 
 {% block title %} Perfil de {{ user.username }}{% endblock %}
@@ -20,6 +22,9 @@
                         <form action="." method="POST" enctype="multipart/form-data">
                             {% csrf_token %}
                             
+                            <center><img src="{{ request.user.perfil.image_url|default_if_none:'/static/imagens/74472.png' }}" alt="imagem"
+                            class="myimg" height="120px" width="120px"></center>
+                            
                             <div class="form-label-group">
                                 <label for="inputUser">Usuário:</label>
                                 <input type="text" id="inputUser" class="form-control" name="username" value="{{ user.username }}" required>
@@ -30,8 +35,10 @@
                                 <input type="email" id="inputUser" name="email" class="form-control" value="{{ user.email }}">
                             </div>
                             <br>
-                            <button type="submit" class="btn btn-success btn-sm">Salvar</button>
-                            <a href="{% url 'lista_jogos' %}" class="btn btn-primary btn-sm mx-3" 
+                            {{ profile|crispy }}
+                            
+                            <button type="submit" class="btn btn-success btn-sm">Atualizar</button>
+                            <a href="{% url 'lista_jogos' %}" class="btn btn-primary btn-sm mx-3"
                             style="position:absolute; right:1px;">Voltar</a>
                         </form>
                     </div>

@@ -7,6 +7,6 @@ class JogosAdmin(admin.ModelAdmin):
 admin.site.register(Jogos, JogosAdmin)
 
 class PerfilAdmin(admin.ModelAdmin):
-    list_display = ['imagem_perfil',]
+    list_display = ['imagem_perfil', 'usuario']
 
 admin.site.register(Perfil, PerfilAdmin)

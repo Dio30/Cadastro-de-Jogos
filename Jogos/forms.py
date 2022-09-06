@@ -2,6 +2,7 @@ from django import forms
 from .models import Jogos, Perfil
 from django.contrib.auth.forms import UserChangeForm
 from django.contrib.auth.models import User
+from django.core.exceptions import ValidationError
 
 escolhas = [
     ('Ação', 'Ação'),
@@ -20,7 +21,19 @@ class JogosForm(forms.ModelForm):
             'estilo_do_jogo': forms.RadioSelect(choices=escolhas)
         }
         
-class PerfilForm(UserChangeForm):
+    def clean_nome_do_jogo(self):
+        u = self.cleaned_data['nome_do_jogo']
+        if Jogos.objects.filter(nome_do_jogo=u).exists():
+            raise ValidationError("O jogo {} já existe.".format(u))
+        return u
+        
+class PerfilForm(forms.ModelForm):
     class Meta:
         model = User
-        fields = '__all__'
+        fields = ['username', 'email']
+        
+class PerfilUpdate(forms.ModelForm):
+    class Meta:
+        model = Perfil
+        fields = ['imagem_perfil',]
+        

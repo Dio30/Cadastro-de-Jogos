@@ -16,7 +16,7 @@
     </ul>
 
     <ul class="nav justify-content-center">
-        <h4 class="color">Jogos / {{ user.username }}</h4>
+        <h4 class="color"><img src="{{ request.user.perfil.image_url|default_if_none:'/static/imagens/74472.png' }}" class="myimg" title="Foto de {{ user.username }}" height="50px" width="50px"> {{ user.username }}</h4>
     </ul>
 
     <ul class="nav justify-content-end">

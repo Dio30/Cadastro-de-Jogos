@@ -1,5 +1,5 @@
-from .forms import JogosForm, PerfilForm
-from .models import Jogos, Perfil
+from .forms import JogosForm, PerfilForm, PerfilUpdate
+from .models import Jogos
 from django.urls import reverse_lazy
 from django.shortcuts import get_object_or_404, render
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
@@ -86,19 +86,17 @@ class JogosDelete(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
 @login_required(login_url ='login')
 
 def perfil(request):
-    if request.method == "GET":
-        return render(request, 'cadastro/perfil.html')
-    
-    elif request.method == 'POST':
+    if request.method == 'POST':
         username = request.POST.get('username')
         email = request.POST.get('email')
         usuario = User.objects.filter(username=username).exclude(id=request.user.id)
-        form = PerfilForm(data=request.POST, files=request.FILES)
+        form = PerfilForm(request.POST, instance=request.user)
+        profile = PerfilUpdate(request.POST, request.FILES, instance=request.user.perfil)
         
-        if form.is_valid():
+        if form.is_valid() and profile.is_valid():
             form.save()
-            obj = form.instance
-            return render(request, 'cadastro/perfil.html', {'obj': obj})
+            profile.save()
+            return render(request, 'cadastro/perfil.html')
         
         if usuario.exists():
             messages.error(request, f"Já existe um usuario com esse nome: {username}")
@@ -116,6 +114,11 @@ def perfil(request):
         messages.success(request, "Dados alterados com sucesso")
         
     else:
-        form = PerfilForm()
-    img = Perfil.objects.all()
-    return render(request, 'cadastro/perfil.html', {'form':form, 'img':img})
+        form = PerfilForm(request.POST)
+        profile = PerfilUpdate(request.POST, request.FILES)
+        
+    context = {
+        'form':form,
+        'profile':profile,
+    }
+    return render(request, 'cadastro/perfil.html', context)

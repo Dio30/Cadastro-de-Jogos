@@ -1,13 +1,10 @@
-from .forms import JogosForm, PerfilForm, PerfilUpdate
+from .forms import JogosForm
 from .models import Jogos
 from django.urls import reverse_lazy
-from django.shortcuts import get_object_or_404, render
-from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
+from django.shortcuts import get_object_or_404
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView, TemplateView
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.models import User
-from django.contrib import messages
-from django.contrib.auth.decorators import login_required
 
 class JogosList(LoginRequiredMixin, ListView):
     model = Jogos
@@ -19,7 +16,7 @@ class JogosList(LoginRequiredMixin, ListView):
         self.object_list = Jogos.objects.filter(usuario=self.request.user)
         return self.object_list
     
-    def get(self, request, *args, **kwargs):
+    def get(self, request, *args, **kwargs): #para fazer pesquisa de um determinado jogo
         pesquisar = self.request.GET.get('nome_do_jogo')
         if pesquisar:
             self.object_list = self.get_queryset().filter(nome_do_jogo__icontains=pesquisar)
@@ -81,44 +78,3 @@ class JogosDelete(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
     def get_object(self, queryset=None):
         self.object = get_object_or_404(Jogos, pk=self.kwargs['pk'], usuario=self.request.user)
         return self.object
-    
-###############################################################################################################################
-@login_required(login_url ='login')
-
-def perfil(request):
-    if request.method == 'POST':
-        username = request.POST.get('username')
-        email = request.POST.get('email')
-        usuario = User.objects.filter(username=username).exclude(id=request.user.id)
-        form = PerfilForm(request.POST, instance=request.user)
-        profile = PerfilUpdate(request.POST, request.FILES, instance=request.user.perfil)
-        
-        if form.is_valid() and profile.is_valid():
-            form.save()
-            profile.save()
-            return render(request, 'cadastro/perfil.html')
-        
-        if usuario.exists():
-            messages.error(request, f"Já existe um usuario com esse nome: {username}")
-            return render(request, 'cadastro/perfil.html')
-        
-        meu_email = User.objects.filter(email=email).exclude(id=request.user.id)
-        
-        if meu_email.exists():
-            messages.error(request, f"Já existe um usuario com esse email: {email}")
-            return render(request, 'cadastro/perfil.html')
-        
-        request.user.username = username
-        request.user.email = email
-        request.user.save()
-        messages.success(request, "Dados alterados com sucesso")
-        
-    else:
-        form = PerfilForm(request.POST)
-        profile = PerfilUpdate(request.POST, request.FILES)
-        
-    context = {
-        'form':form,
-        'profile':profile,
-    }
-    return render(request, 'cadastro/perfil.html', context)

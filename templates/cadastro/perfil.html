@@ -2,8 +2,6 @@
 
 {% load static %}
 
-{% load crispy_forms_tags %}
-
 {% block title %} Perfil de {{ user.username }}{% endblock %}
 
 {% block main %}
@@ -14,33 +12,21 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-6">
-                <div class="card shadow-lg border-1 rounded-lg my-4">
+                <div class="card shadow-lg border-1 rounded-lg">
                     <div class="card-header justify-content-center mycardheader">
                         <h3 class="font-weight-dark text-center">Perfil de {{ user.username }}</h3>
                     </div>
                     <div class="card-body mybody">
-                        <form action="." method="POST" enctype="multipart/form-data">
-                            {% csrf_token %}
-                            
-                            <center><img src="{{ request.user.perfil.image_url|default_if_none:'/static/imagens/74472.png' }}" alt="imagem"
+                        <center><img src="{{ request.user.perfil.image_url|default_if_none:'/static/imagens/74472.png' }}"
                             class="myimg" height="120px" width="120px"></center>
-                            
-                            <div class="form-label-group">
-                                <label for="inputUser">Usuário:</label>
-                                <input type="text" id="inputUser" class="form-control" name="username" value="{{ user.username }}" required>
-                            </div>
                             <br>
-                            <div class="form-label-group">
-                                <label for="inputUser">Email:</label>
-                                <input type="email" id="inputUser" name="email" class="form-control" value="{{ user.email }}">
-                            </div>
-                            <br>
-                            {{ profile|crispy }}
-                            
-                            <button type="submit" class="btn btn-success btn-sm">Atualizar</button>
-                            <a href="{% url 'lista_jogos' %}" class="btn btn-primary btn-sm mx-3"
+                        <p>Usuario: {{ user.username }}</p>
+                        <hr>
+                        <p>Email: {{ user.email }}</p>
+                        <hr>
+                        <a href="{% url 'perfil_edit' %}" class="btn btn-success btn-sm">Editar Perfil</a>
+                        <a href="{% url 'lista_jogos' %}" class="btn btn-primary btn-sm mx-3"
                             style="position:absolute; right:1px;">Voltar</a>
-                        </form>
                     </div>
                 </div>
             </div>

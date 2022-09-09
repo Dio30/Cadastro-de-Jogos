@@ -4,8 +4,9 @@ from django.contrib.auth.models import User
 escolhas = [
     ('Ação', 'Ação'),
     ('Aventura', 'Aventura'),
+    ('Corrida', 'Corrida'),
     ('Futebol', 'Futebol'),
-    ('RPG', 'RPG'),
+    ('MMORPG', 'MMORPG'),
     ('Outros', 'Outros'),
 ]
 

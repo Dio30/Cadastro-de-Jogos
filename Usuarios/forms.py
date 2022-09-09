@@ -17,7 +17,7 @@ class UsuariosForm(UserCreationForm):
     
     def clean_email(self):
         e = self.cleaned_data['email']
-        if User.objects.filter(email=e).exists():
+        if User.objects.filter(email=e).exclude(email='').exists():
             raise ValidationError(f'O email {e} já existe.')
         return e
     
@@ -28,10 +28,12 @@ class PerfilUpdate(forms.ModelForm):
         exclude = ['usuario',]
         
 class PerfilForm(forms.ModelForm):
+    email = forms.EmailField(help_text='Insira um email valido.', required=False, widget=forms.EmailInput
+                             (attrs={'spellcheck':'false', 'placeholder':'Email', 'id':'inputUser', 'class':'form-control'})) #input
     class Meta:
         model = User
         fields = ['username', 'email',]
         widgets = {
-            'username': forms.TextInput(attrs={"class":"form-control", 'spellcheck':'off', 'autofocus':'on'}),
-            'email': forms.EmailInput(attrs={"class":"form-control"}),
+            'username': forms.TextInput
+            (attrs={'spellcheck':'false', 'autofocus':'on', 'id':'inputUser', 'class':'form-control', 'placeholder':'Usuário'}), #input
             }

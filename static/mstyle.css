@@ -1,0 +1,364 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@1,300&display=swap');
+
+@media (min-width: 768px){ /* para deixar o site responsivo */
+    body{max-width: 100%;};
+}
+
+body{
+    background-image: url("imagens/papel-de-parede-adesivo-play-game-preto-adesivo-jogos-online.jpg");
+    background-attachment: fixed;
+    background-origin: padding-box;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    min-height: 100vh;
+}
+
+.mycardheader{ /* para deixar os itens no card-header na cor definida */
+    background-color: #ababab;
+}
+
+.mybody{ /* para deixar os itens no card-body na cor definida */
+    background-color: #868686;
+    color: #000000fa;
+    font-weight: bold;
+}
+
+.mynav{
+    backdrop-filter: blur( 3.5px );
+    -webkit-backdrop-filter: blur( 13.5px );
+    border-radius: 10px;
+    border: 10px double #000000;
+    background: #0deed060;
+}
+
+.color{
+    color:#000000;
+    font-weight: bolder;
+    font-size: 140%;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.mytable{
+    text-align: center;
+    color:#000000;
+    background-color: #119e9e;
+    line-height: 2.5rem;
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    overflow-x: hidden; /* para ocultar as bordas no eixo x */
+    overflow-y: hidden; /* para ocultar as bordas no eixo y */
+    width: 100%; /* para deixar a tabela responsiva */
+    min-width: 300px; /* para deixar a tabela responsiva */
+    max-width: 960px; /* para deixar a tabela responsiva */
+    border-collapse: separate ;
+    box-shadow: #03fee17d 7px 7px 7px;
+}
+
+.table-bordered{
+    color:#000000;
+}
+
+.myform{
+    color: #f8f8f8;
+    font-weight: bolder;
+}
+
+.mydiv{
+    background: #6c6c6c;
+}
+
+.theadcolor{
+    color:#000000;
+    font-weight: bolder;
+    font-family: 'Times New Roman', Times, serif;
+    background-color: #0cb2b2;
+}
+
+.tbodycolor{
+    color:#000000;
+    font-weight:900;
+    font-family: 'Times New Roman', Times, serif;
+    background-color: #108383;
+}
+
+.mymodalbutton{
+    margin-left: 15px;
+    position:absolute;
+    left: 1px;
+}
+
+.btn_submit{
+  position: relative;
+  display:inline-block;
+  text-decoration: none;
+  overflow: hidden;
+  font-weight: bold;
+  font-size: 110%;
+  font-family:Arial, Helvetica, sans-serif;
+  color: #000000;
+  transition: .5s;
+  letter-spacing: 0.5px;
+}
+
+.btn_submit:hover{
+  background: #03e9f4;
+  color: rgb(10, 11, 21);
+  border-radius: 5px;
+}
+
+.btn_submit span{
+  position: absolute;
+  display: block;
+}
+
+.btn_submit span:nth-child(1){
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #03e9f4);
+  animation: btn-anim1 1s linear infinite;
+}
+
+@keyframes btn-anim1 {
+  0% {
+    left: -100%;
+  }
+  50%, 100%{
+    left: 100%;
+  }
+}
+
+.btn_submit span:nth-child(2){
+  top: -100%;
+  right: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(180deg, transparent, #03e9f4);
+  animation: btn-anim2 1s linear infinite;
+  animation-delay: .25s;
+}
+
+@keyframes btn-anim2 {
+  0% {
+    top: -100%;
+  }
+  50%, 100%{
+    top: 100%;
+  }
+}
+
+.btn_submit span:nth-child(3){
+  bottom: 0;
+  right: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(270deg, transparent, #03e9f4);
+  animation: btn-anim3 1s linear infinite;
+  animation-delay: .5s;
+}
+
+@keyframes btn-anim3 {
+  0% {
+    right: -100%;
+  }
+  50%, 100%{
+    right: 100%;
+  }
+}
+
+.btn_submit span:nth-child(4){
+  bottom: -100%;
+  left: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(360deg, transparent, #03e9f4);
+  animation: btn-anim4 1s linear infinite;
+  animation-delay: .75s;
+}
+
+@keyframes btn-anim4 {
+  0% {
+    bottom: -100%;
+  }
+  50%, 100%{
+    bottom: 100%;
+  }
+}
+
+.myimg{
+    border-radius: 5rem;
+    border: #000000 2px solid;
+    background: #bfbfbf;
+}
+
+.mytext{
+    color:#e41010;
+}
+
+.text_muted2{
+    color:#000000;
+}
+
+.text-muted{
+    font-size: 100%;
+    font-weight: bold;
+    color: #484848!important;
+}
+
+.fa-user{ /* icon user no login */
+    position: absolute;
+    top: 30%;
+    left: 10px;
+  }
+
+.fa-lock{
+  position: absolute;
+  top: .99rem;
+  left: 10px;
+}
+  
+.user{ /* icon user na registro */
+    position: absolute;
+    top: .90rem;
+    left: 10px;
+  }
+  
+.fa-envelope{ /* icon email na registro */
+    position: absolute;
+    top: .99rem;
+    left: 10px;
+    font-size: 85%;
+}
+
+.fa-gamepad{
+    position: absolute;
+    top: .99rem;
+    left: 10px;
+    font-size: 90%;
+}
+
+.form-label-group { /* suporte para o login dinamico */
+    position: relative;
+    margin-bottom: 1rem;
+  }
+
+.form-label-group input:hover{
+  background: #c8c8c8;
+  color: #000000;
+}
+  
+.form-label-group input,
+.form-label-group label { /* suporte para o login dinamico */
+    height: 3.125rem;
+    padding: .75rem;
+    padding-right: 40px;
+    padding-left: 30px;
+  }
+  
+  .form-label-group label { /* suporte para o login dinamico */
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    display: block;
+    width: 100%;
+    margin-bottom: 0; /* Override default `<label>` margin */
+    line-height: 1.5;
+    color: #495657;
+    pointer-events: none;
+    cursor: text; /* Match the input under the label */
+    border: 1px solid transparent;
+    border-radius: 1.25rem;
+    transition: all .1s ease-in-out;
+    font-size: 90%;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  .form-label-group input::-webkit-input-placeholder { /* suporte para o login dinamico */
+    color: transparent;
+  }
+  
+  .form-label-group input::-moz-placeholder { /* suporte para o login dinamico */
+    color: transparent;
+  }
+  
+  .form-label-group input:-ms-input-placeholder { /* suporte para o login dinamico */
+    color: transparent;
+  }
+  
+  .form-label-group input::-ms-input-placeholder { /* suporte para o login dinamico */
+    color: transparent;
+  }
+  
+  .form-label-group input::placeholder { /* suporte para o login dinamico */
+    color: transparent;
+    
+  }
+  
+  .form-label-group input:not(:-moz-placeholder-shown) { /* suporte para o login dinamico */
+    padding-top: .25rem;
+    padding-bottom: .25rem;
+  }
+  
+  .form-label-group input:not(:-ms-input-placeholder) { /* suporte para o login dinamico */
+    padding-top: 1.25rem;
+    padding-bottom: .25rem;
+  }
+  
+  .form-label-group input:not(:placeholder-shown) { /* suporte para o login dinamico */
+    padding-top: 1.25rem;
+    padding-bottom: .25rem;
+  }
+  
+  .form-label-group input:not(:-moz-placeholder-shown) ~ label { /* suporte para o login dinamico */
+    padding-top: .25rem;
+    padding-bottom: .25rem;
+    font-size: 12px;
+    color: #777;
+  }
+  
+  .form-label-group input:not(:-ms-input-placeholder) ~ label { /* suporte para o login dinamico */
+    padding-top: .25rem;
+    padding-bottom: .25rem;
+    font-size: 12px;
+    color: #777;
+  }
+  
+  .form-label-group input:not(:placeholder-shown) ~ label { /* suporte para o login dinamico */
+    padding-top: .25rem;
+    padding-bottom: .25rem;
+    font-size: 13px;
+    font-weight: bold;
+    color: #343434;
+  }
+  
+  .form-label-group input:-webkit-autofill ~ label { /* suporte para o login dinamico */
+    padding-top: .25rem;
+    padding-bottom: .25rem;
+    font-size: 12px;
+    color: #777;
+  }
+  
+  /* Fallback for Edge
+  -------------------------------------------------- */
+  @supports (-ms-ime-align: auto) { /* suporte para o login dinamico */
+    .form-label-group {
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-direction: column-reverse;
+      flex-direction: column-reverse;
+    }
+  
+    .form-label-group label {
+      position: static;
+    }
+  
+    .form-label-group input::-ms-input-placeholder {
+      color: #777;
+    }
+  }
+
+.asteriskField {
+    display: none;
+}

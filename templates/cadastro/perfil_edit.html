@@ -24,15 +24,17 @@
                             
                             <center><img src="{{ request.user.perfil.image_url|default_if_none:'/static/imagens/74472.png' }}"
                             class="myimg" height="120px" width="120px"></center>
-                            
+                            <br>
                             <div class="form-label-group">
-                                <label>Usuário:</label>
-                                <p>{{ form.username }}</p>
+                                <span class="fa fa-user"></span>
+                                {{ form.username }}
+                                <label for="inputUser">Usuário</label>
                             </div>
                             
                             <div class="form-label-group">
-                                <label>Email:</label>
-                                <p>{{ form.email }}</p>
+                                <span class="fa fa-envelope"></span>
+                                {{ form.email }}
+                                <label for="inputUser">Email</label>
                             </div>
                             
                             {{ perfil|crispy }}

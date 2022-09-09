@@ -22,24 +22,27 @@
                             <u>Itens com * são obrigatórios</u>
                             <br><br>
                             <div class="form-label-group">
-                                <label for="inputUser" class="text_muted2">Usuário*</label>
+                                <span class="fa fa-user user"></span>
                                 <input type="text" name="username" minlength="3" class="form-control" id="inputUser" spellcheck="off" 
-                                placeholder="Insira um nome de usuário válido" autofocus required>
+                                placeholder="Usuário" autofocus required>
+                                <label for="inputUser">Usuário</label>
                                 <font class='mytext'>{{ form.username.errors }}</font>
                                 <font class="text-muted2">Obrigatório 3 caracteres ou mais. Letras, números e @/./+/-/_ apenas.
                             </div>
                             <br>
                             <div class="form-label-group">
-                                <label for="inputUser" class="text_muted2">Email</label>
-                                <input type="email" name="email" class="form-control" id="inputUser" placeholder="Insira um email válido">
+                                <span class="fa fa-envelope"></span>
+                                <input type="email" name="email" class="form-control" id="inputUser" placeholder="Email">
                                 <font class='mytext'>{{ form.email.errors }}</font>
+                                <label for="inputUser">Email</label>
                                 <font class="text-muted2">Insira um email valido. Ex: exemplo@exemplo.com</font>
                             </div>
                             <br>
                             <div class="form-label-group">
-                                <label for="inputUser" class="text_muted2">Senha*</label>
+                                <span class="fa fa-lock"></span>
                                 <input type="password" name="password1" class="form-control" id="inputUser" 
-                                placeholder="Insira uma senha válida" required>
+                                placeholder="Senha" required>
+                                <label for="inputUser">Senha</label>
                                 <ul class="text-muted2">
                                     <li>Sua senha não pode ser muito parecida com o nome do usuário.</li>
                                     <li>Sua senha precisa conter pelo menos 8 caracteres.</li>
@@ -50,14 +53,20 @@
                             </div>
                             <br>
                             <div class="form-label-group">
-                                <label for="inputUser" class="text_muted2">Confirmar Senha*</label>
+                                <span class="fa fa-lock"></span>
                                 <input type="password" name="password2" class="form-control" id="inputUser" 
                                 placeholder="Confirme sua senha" required>
+                                <label for="inputUser">Confirmar Senha</label>
                                 <p class="text_muted2">Informe a mesma senha informada anteriormente, para verificação.</p>
                                 <font class='mytext'>{{ form.password2.errors }}</font>
                             </div>
-                            <center><button type="submit" class="btn btn-primary mx-3">Cadastrar</button>
-                            <a href="{% url 'login' %}" class="btn btn-info mx-3">Voltar</a></center>
+                            <center><button type="submit" class="btn btn-outline-dark mx-3 btn_submit">Cadastrar
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </button>
+                            <a href="{% url 'login' %}" class="btn btn-primary mx-3 btn_submit">Voltar</a></center>
                         </form>
                     </div>
                 </div>

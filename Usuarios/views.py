@@ -1,4 +1,3 @@
-from Usuarios.models import Perfil
 from .forms import UsuariosForm, PerfilForm, PerfilUpdate
 from django.views.generic.edit import CreateView
 from django.urls import reverse_lazy
@@ -27,13 +26,6 @@ class PerfilUpdateView(LoginRequiredMixin, TemplateView):
         profile = request.user.perfil
         form = PerfilForm(request.POST or None, instance=request.user)
         perfil = PerfilUpdate(data=request.POST, files=request.FILES, instance=profile)
-        
-        if form.is_valid() and perfil.is_valid():
-            form.save()
-            perfil.save()
-            messages.success(request, "Dados alterados com sucesso")
-            return HttpResponseRedirect(reverse_lazy('perfil'))
-        
         usuario = User.objects.filter(username=username).exclude(id=request.user.id)
         
         if usuario.exists():
@@ -42,9 +34,15 @@ class PerfilUpdateView(LoginRequiredMixin, TemplateView):
         
         meu_email = User.objects.filter(email=email).exclude(id=request.user.id)
         
-        if meu_email.exists():
+        if meu_email.exclude(email='').exists():
             messages.error(request, f"Já existe um usuario com esse email: {email}")
             return HttpResponseRedirect(reverse_lazy('perfil_edit'))
+        
+        if form.is_valid() and perfil.is_valid():
+            form.save()
+            perfil.save()
+            messages.success(request, "Dados alterados com sucesso")
+            return HttpResponseRedirect(reverse_lazy('perfil'))
         
         context = self.get_context_data(perfil=perfil, form=form)
         return self.render_to_response(context)

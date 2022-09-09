@@ -8,19 +8,44 @@
 
 {% include 'mensagens.html' %}
 
-<div class="form-content my-4">
+<div class="form-content my-5">
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-lg-6">
+            <div class="col-lg-5">
                 <div class="card shadow-lg border-1 rounded-lg my-4">
                     <div class="card-header justify-content-center mycardheader">
                         <h2 class="font-weight-dark text-center">Login | Jogos</h2>
                     </div>
                     <div class="card-body mybody">
-                        <form action="." method="POST" autocomplete="off">
+                        <form method="POST" autocomplete="off">
                             {% csrf_token %}
-                            {{ form|crispy }}
-                            <center><button type="submit" class="col-md-4 btn btn-primary">Entrar</button></center>
+
+                                {% if form.non_field_errors %}
+                                    {% for error in form.non_field_errors %}
+                                    <div class="alert alert-danger" role="alert">
+                                        {{ error }}
+                                    </div>
+                                    {% endfor %}
+                                {% endif %}
+
+                            <div class="form-label-group">
+                                <span class="fa fa-user user"></span>
+                                <input name="username" type="text" placeholder="Usuário" class="form-control" autofocus required>
+                                <label for="inputUser">Usuário</label>
+                            </div>
+
+                            <div class="form-label-group">
+                                <span class="fa fa-lock"></span>
+                                <input name="password" type="password" placeholder="Senha" class="form-control" required>
+                                <label for="inputUser">Senha</label>
+                            </div>
+                            
+                            <center><button type="submit" class="btn btn-lg btn-outline-dark btn_submit">Entrar
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </button></center>
                             <br>
                             <center>Não tem uma conta? <a href="{% url 'cadastrar' %}">Cadastre-se aqui</a>.</center>
                             <input type="hidden" name="next" value="{{ next }}">

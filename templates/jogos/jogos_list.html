@@ -28,7 +28,6 @@
     <thead class="theadcolor">
         <tr>
             <th>Jogo</th>
-            <th>Estilo</th>
             <th>Imagem</th>
             <th>Editar</th>
             <th>Deletar</th>
@@ -39,13 +38,12 @@
         <tr>
             {% for jogo in object_list %}
             <td>{{ jogo.nome_do_jogo }}</td>
-            <td>{{ jogo.estilo_do_jogo }}</td>
             <td><a href="{% url 'imagem' jogo.pk %}" class="btn btn-success btn-sm" 
                 data-toggle="modal" data-target="#exampleModal{{ jogo.pk }}">
                 <i class="fa fa-picture-o" aria-hidden="true"></i></a>
 
                 <!-- Modal -->
-                <div class="modal fade" id="exampleModal{{ jogo.pk }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <center><div class="modal fade" id="exampleModal{{ jogo.pk }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header mydiv">
@@ -61,10 +59,11 @@
                                 </form>
                             </div>
                             <div class="modal-footer mydiv">
+                                <b style="padding-right: 30%; font-size: 110%;">Estilo do Jogo: {{ jogo.estilo_do_jogo }}</b>
                             </div>
                         </div>
                     </div>
-                </div>
+                </div></center>
             </td>
 
             <td><a href="{% url 'editar' jogo.pk %}" class="btn btn-warning btn-sm">

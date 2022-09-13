@@ -1,4 +1,4 @@
-from .forms import UsuariosForm, PerfilForm, PerfilUpdate
+from .forms import UsuariosForm, PerfilForm, PerfilUpdate, PasswordForm
 from django.views.generic.edit import CreateView
 from django.urls import reverse_lazy
 from django.shortcuts import HttpResponseRedirect
@@ -7,6 +7,7 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
 from django.contrib import messages
+from django.contrib.auth.views import PasswordChangeView
 
 class UsuariosViews(SuccessMessageMixin, CreateView):
     template_name = 'cadastro/cadastrar.html'
@@ -49,3 +50,10 @@ class PerfilUpdateView(LoginRequiredMixin, TemplateView):
     
     def get(self, request, *args, **kwargs):
         return self.post(request, *args, **kwargs)
+    
+class ChangePasswordView(LoginRequiredMixin, SuccessMessageMixin, PasswordChangeView): #caso queria alterar a sua senha
+    form_class = PasswordForm
+    template_name = 'cadastro/trocar_senha.html'
+    success_message = "Senha alterada com sucesso"
+    success_url = reverse_lazy('lista_jogos')
+    login_url = reverse_lazy('login') # se alguem tentar entrar em alguma pagina sem estar autenticado será redirecionado para o login

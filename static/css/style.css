@@ -5,13 +5,28 @@
 }
 
 body{
-    background-image: url("imagens/papel-de-parede-adesivo-play-game-preto-adesivo-jogos-online.jpg");
+    background-image: url("/static/imagens/papel-de-parede-adesivo-play-game-preto-adesivo-jogos-online.jpg");
     background-attachment: fixed;
     background-origin: padding-box;
     display: flex;
     flex-direction: column;
     position: relative;
     min-height: 100vh;
+}
+
+.icon{
+  position: absolute;
+  top: 1.5rem;
+  right: 10px;
+  transform: translateY(-50%);
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.perfil{
+  color:#000000;
+  font-size: 70%;
 }
 
 .mycardheader{ /* para deixar os itens no card-header na cor definida */
@@ -195,10 +210,11 @@ body{
 
 .mytext{
     color:#e41010;
+    list-style-type: none; 
 }
 
 .text_muted2{
-    color:#000000;
+    color:#424242;
 }
 
 .text-muted{
@@ -241,11 +257,11 @@ body{
 
 .form-label-group { /* suporte para o login dinamico */
     position: relative;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
   }
 
-.form-label-group input:hover{
-  background: #c8c8c8;
+.form-label-group input:hover{ /* para quando passar o mouse no campo selecionado */
+  background: #eeeded;
   color: #000000;
 }
   
@@ -253,7 +269,7 @@ body{
 .form-label-group label { /* suporte para o login dinamico */
     height: 3.125rem;
     padding: .75rem;
-    padding-right: 40px;
+    padding-right: 50px;
     padding-left: 30px;
   }
   
@@ -330,7 +346,7 @@ body{
     padding-bottom: .25rem;
     font-size: 13px;
     font-weight: bold;
-    color: #343434;
+    color: #777;
   }
   
   .form-label-group input:-webkit-autofill ~ label { /* suporte para o login dinamico */

@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% load crispy_forms_tags %}
+
+{% block title %} Alterar Senha{% endblock %}
+
+{% block main %}
+
+{% include 'mensagens.html' %}
+
+<div class="form-content my-4">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <div class="card shadow-lg border-1 rounded-lg my-4">
+                    <div class="card-header justify-content-center mycardheader">
+                        <h3 class="font-weight-dark text-center">Alterar Senha</h3>
+                    </div>
+                    <div class="card-body mybody">
+                        <form method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+                        
+                            <div class='form-label-group'>
+                                <span class="fa fa-lock"></span>
+                                {{ form.old_password }}
+                                <label>Senha Atual</label>
+                                <img src="{% static 'imagens/eye.svg' %}" class="icon" onclick="mostrarSenha1()">
+                                <font class='mytext'>{{ form.old_password.errors }}</font>
+                            </div>
+                            
+                            <div class='form-label-group'>
+                                <span class="fa fa-lock"></span>
+                                {{ form.new_password1 }}
+                                <label>Nova Senha</label>
+                                <img src="{% static 'imagens/eye.svg' %}" class="icon" id="icon" onclick="mostrarSenha3()">
+                                <font class='mytext'>{{ form.new_password1.errors }}</font>
+                                <ul class="text_muted2" style="margin-top: 1rem;">
+                                    <li>Sua senha não pode ser muito parecida com o nome do usuário.</li>
+                                    <li>Sua senha precisa conter pelo menos 8 caracteres.</li>
+                                    <li>Sua senha não pode ser uma senha comumente utilizada. Ex: aaa, bbb, 1234..., etc.</li>
+                                    <li>Sua senha não pode ser inteiramente numérica, use letras juntamente de números ou 
+                                    caracteres especiais como @/./+/-/_</li>
+                                </ul>
+                            </div>
+
+                            <div class='form-label-group'>
+                                <span class="fa fa-lock"></span>
+                                {{ form.new_password2 }}
+                                <label>Confirmar Senha</label>
+                                <img src="{% static 'imagens/eye.svg' %}" class="icon" id="icon1" onclick="mostrarSenha4()">
+                                <p class="text_muted2">Informe a mesma senha informada anteriormente, para verificação.</p>
+                                <font class='mytext'>{{ form.new_password2.errors }}</font>
+                            </div>
+                            <button type="submit" class="btn btn-info btn-sm">Salvar</button>
+                            <a href="{% url 'lista_jogos' %}" class="btn btn-primary btn-sm mx-3" 
+                            style="position:absolute; right:1px;">Voltar</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

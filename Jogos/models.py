@@ -23,8 +23,8 @@ class Jogos(models.Model):
     
     def __str__(self):
         return self.nome_do_jogo
-        
-    @property
+
+    @property 
     def image_url(self): # para poder visualizar fotos no html
         if self.imagem and hasattr(self.imagem, 'url'):
             return self.imagem.url

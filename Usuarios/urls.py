@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import UsuariosViews, PerfilUpdateView, PerfilList
+from .views import UsuariosViews, PerfilUpdateView, PerfilList, ChangePasswordView
 from django.contrib.auth import views as auth_views
 
 urlpatterns = [
@@ -8,4 +8,5 @@ urlpatterns = [
     path('sair/', auth_views.LogoutView.as_view(), name='logout'),
     path('perfil/', PerfilList.as_view(), name='perfil'),
     path('perfil-edit/', PerfilUpdateView.as_view(), name='perfil_edit'),
+    path('trocar-senha/', ChangePasswordView.as_view(), name='trocar_senha'),
 ]

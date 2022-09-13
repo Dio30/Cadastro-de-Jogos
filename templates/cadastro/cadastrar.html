@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% load crispy_forms_tags %}
 
 {% block title %} Cadastrar Novo Usuario {% endblock %}
@@ -26,47 +28,50 @@
                                 <input type="text" name="username" minlength="3" class="form-control" id="inputUser" spellcheck="off" 
                                 placeholder="Usuário" autofocus required>
                                 <label for="inputUser">Usuário</label>
+                                <p class="text_muted2">Obrigatório 3 caracteres ou mais. Letras, números e @/./+/-/_ apenas.</p>
                                 <font class='mytext'>{{ form.username.errors }}</font>
-                                <font class="text-muted2">Obrigatório 3 caracteres ou mais. Letras, números e @/./+/-/_ apenas.
                             </div>
-                            <br>
+                           
                             <div class="form-label-group">
                                 <span class="fa fa-envelope"></span>
                                 <input type="email" name="email" class="form-control" id="inputUser" placeholder="Email">
-                                <font class='mytext'>{{ form.email.errors }}</font>
                                 <label for="inputUser">Email</label>
-                                <font class="text-muted2">Insira um email valido. Ex: exemplo@exemplo.com</font>
+                                <p class="text_muted2">Insira um email valido. Ex: exemplo@exemplo.com</p>
+                                <font class='mytext'>{{ form.email.errors }}</font>
                             </div>
-                            <br>
+                            
                             <div class="form-label-group">
                                 <span class="fa fa-lock"></span>
-                                <input type="password" name="password1" class="form-control" id="inputUser" 
+                                <input type="password" name="password1" class="form-control" id="senha" 
                                 placeholder="Senha" required>
-                                <label for="inputUser">Senha</label>
-                                <ul class="text-muted2">
+                                <label>Senha</label>
+                                <img src="{% static 'imagens/eye.svg' %}" class="icon" onclick="mostrarSenha1()">
+                                <ul class="text_muted2" style="margin-top: 1rem;">
                                     <li>Sua senha não pode ser muito parecida com o nome do usuário.</li>
                                     <li>Sua senha precisa conter pelo menos 8 caracteres.</li>
                                     <li>Sua senha não pode ser uma senha comumente utilizada. Ex: aaa, bbb, 1234..., etc.</li>
                                     <li>Sua senha não pode ser inteiramente numérica, use letras juntamente de números ou 
                                     caracteres especiais como @/./+/-/_</li>
                                 </ul>
+                                <font class='mytext'>{{ form.password1.errors }}</font>
                             </div>
-                            <br>
+                            
                             <div class="form-label-group">
                                 <span class="fa fa-lock"></span>
-                                <input type="password" name="password2" class="form-control" id="inputUser" 
+                                <input type="password" name="password2" class="form-control" id="senha1" 
                                 placeholder="Confirme sua senha" required>
-                                <label for="inputUser">Confirmar Senha</label>
+                                <label>Confirmar Senha</label>
+                                <img src="{% static 'imagens/eye.svg' %}" class="icon" id="icon" onclick="mostrarSenha2()">
                                 <p class="text_muted2">Informe a mesma senha informada anteriormente, para verificação.</p>
                                 <font class='mytext'>{{ form.password2.errors }}</font>
                             </div>
-                            <center><button type="submit" class="btn btn-outline-dark mx-3 btn_submit">Cadastrar
+                            <center><button type="submit" class="btn btn-outline-dark mx-2 btn_submit">Cadastrar
                                 <span></span>
                                 <span></span>
                                 <span></span>
                                 <span></span>
                             </button>
-                            <a href="{% url 'login' %}" class="btn btn-primary mx-3 btn_submit">Voltar</a></center>
+                            <a href="{% url 'login' %}" class="btn btn-primary mx-2 btn_submit">Voltar</a></center>
                         </form>
                     </div>
                 </div>

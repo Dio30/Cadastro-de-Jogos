@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% load crispy_forms_tags %}
 
 {% block title %} Login {% endblock %}
@@ -23,7 +25,7 @@
                                 {% if form.non_field_errors %}
                                     {% for error in form.non_field_errors %}
                                     <div class="alert alert-danger" role="alert">
-                                        {{ error }}
+                                        Usuário ou senha incorretos, tente novamente.
                                     </div>
                                     {% endfor %}
                                 {% endif %}
@@ -31,13 +33,14 @@
                             <div class="form-label-group">
                                 <span class="fa fa-user user"></span>
                                 <input name="username" type="text" placeholder="Usuário" class="form-control" autofocus required>
-                                <label for="inputUser">Usuário</label>
+                                <label>Usuário</label>
                             </div>
 
                             <div class="form-label-group">
                                 <span class="fa fa-lock"></span>
-                                <input name="password" type="password" placeholder="Senha" class="form-control" required>
-                                <label for="inputUser">Senha</label>
+                                <input name="password" type="password" placeholder="Senha" id="senha" class="form-control" required>
+                                <label>Senha</label>
+                                <img src="{% static 'imagens/eye.svg' %}" class="icon" onclick="mostrarSenha()">
                             </div>
                             
                             <center><button type="submit" class="btn btn-lg btn-outline-dark btn_submit">Entrar

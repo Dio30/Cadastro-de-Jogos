@@ -9,12 +9,13 @@ class JogosForm(forms.ModelForm):
         widgets = {
             'nome_do_jogo': forms.TextInput
             (attrs={'spellcheck':'false', 'autofocus':'on', 'placeholder':'Nome do jogo', 'id':'inputUser', 'class':'form-control'}), #input
-            'estilo_do_jogo': forms.RadioSelect
+            
+            'estilo_do_jogo': forms.RadioSelect,
         }
     
     #def clean_nome_do_jogo(self):
     #    j = self.cleaned_data['nome_do_jogo']
-    #    jogo = Jogos.objects.filter(nome_do_jogo=j).exclude(nome_do_jogo=self)
+    #    jogo = Jogos.objects.filter(nome_do_jogo=j)
     #    if jogo.exists():
     #        raise ValidationError(f'O jogo {j} já existe.')
     #    return j

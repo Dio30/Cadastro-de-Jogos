@@ -9,7 +9,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 class JogosList(LoginRequiredMixin, ListView):
     model = Jogos
     template_name = 'jogos/jogos_list.html'
-    queryset = Jogos.objects.order_by('nome_do_jogo').all
+    queryset = Jogos.objects.order_by('nome_do_jogo').all()
     login_url = reverse_lazy('login')
     
     def get_queryset(self): # para cada usuario ser unico e não ter acesso a qualquer coisa de outros usuarios cadastrados

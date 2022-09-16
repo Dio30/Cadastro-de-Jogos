@@ -11,20 +11,11 @@ class JogosList(LoginRequiredMixin, ListView):
     template_name = 'jogos/jogos_list.html'
     queryset = Jogos.objects.order_by('nome_do_jogo').all()
     login_url = reverse_lazy('login')
+    paginate_by = 3
     
     def get_queryset(self): # para cada usuario ser unico e não ter acesso a qualquer coisa de outros usuarios cadastrados
         self.object_list = Jogos.objects.filter(usuario=self.request.user)
         return self.object_list
-    
-    def get(self, request, *args, **kwargs): #para fazer pesquisa de um determinado jogo
-        pesquisar = self.request.GET.get('nome_do_jogo')
-        if pesquisar:
-            self.object_list = self.get_queryset().filter(nome_do_jogo__icontains=pesquisar)
-        else:
-            self.object_list = self.get_queryset
-        
-        context = self.get_context_data(object_list=self.object_list)
-        return self.render_to_response(context)
     
 class JogosDetail(LoginRequiredMixin, DetailView):
     queryset = Jogos.objects.all()
@@ -37,7 +28,7 @@ class JogosDetail(LoginRequiredMixin, DetailView):
 class JogosNew(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     form_class = JogosForm
     template_name = 'jogos/jogos_form.html'
-    success_message = 'Jogo adicionado com sucesso'
+    success_message = 'Jogo adicionado com sucesso!'
     success_url = reverse_lazy('lista_jogos')
     login_url = reverse_lazy('login')
     
@@ -55,7 +46,7 @@ class JogosNew(LoginRequiredMixin, SuccessMessageMixin, CreateView):
 class JogosEdit(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     form_class = JogosForm
     template_name = 'jogos/jogos_form.html'
-    success_message = 'Jogo editado com sucesso'
+    success_message = 'Jogo editado com sucesso!'
     success_url = reverse_lazy('lista_jogos')
     login_url = reverse_lazy('login')
     
@@ -72,7 +63,7 @@ class JogosEdit(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
 class JogosDelete(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
     queryset = Jogos.objects.all()
     success_url = reverse_lazy('lista_jogos')
-    success_message = 'Jogo deletado com sucesso'
+    success_message = 'Jogo deletado com sucesso!'
     login_url = reverse_lazy('login')
     
     def get_object(self, queryset=None):

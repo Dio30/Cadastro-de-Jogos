@@ -11,7 +11,7 @@ class JogosList(LoginRequiredMixin, ListView):
     template_name = 'jogos/jogos_list.html'
     queryset = Jogos.objects.order_by('nome_do_jogo').all()
     login_url = reverse_lazy('login')
-    paginate_by = 3
+    paginate_by = 1
     
     def get_queryset(self): # para cada usuario ser unico e não ter acesso a qualquer coisa de outros usuarios cadastrados
         self.object_list = Jogos.objects.filter(usuario=self.request.user)

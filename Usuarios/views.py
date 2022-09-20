@@ -42,7 +42,7 @@ class PerfilUpdateView(LoginRequiredMixin, TemplateView):
         if form.is_valid() and perfil.is_valid():
             form.save()
             perfil.save()
-            messages.success(request, "Dados alterados com sucesso")
+            messages.success(request, "Dados alterados com sucesso!")
             return HttpResponseRedirect(reverse_lazy('perfil'))
         
         context = self.get_context_data(perfil=perfil, form=form)

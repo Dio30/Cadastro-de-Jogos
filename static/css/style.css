@@ -14,12 +14,17 @@ body{ /* o corpo do site */
 .mybtn{ /* botões dinamicos */
   color: #ffffff;
   box-shadow: #03fee17d 4px 3px 5px;
-  transition: transform 180ms, box-shadow 180ms;
 }
 
 .mybtn:active{ /* botões dinamicos*/
 transform:translateY(5px) translateX(5px);
 box-shadow: #094c66 5px 5px 5px;
+}
+
+.mybtn:hover{ /*botões dinamicos*/
+  border-radius: 15px;
+  transition: .5s;
+  overflow: hidden;
 }
 
 .icon{ /* icon olho para mostrar a senha */

@@ -14,9 +14,6 @@ class UsuariosViews(SuccessMessageMixin, CreateView):
     form_class = UsuariosForm
     success_message = "Usuário criado com sucesso"
     success_url = reverse_lazy('login')
-    
-class PerfilList(LoginRequiredMixin, TemplateView):
-    template_name = 'cadastro/perfil.html'
 
 class PerfilUpdateView(LoginRequiredMixin, TemplateView):
     template_name = 'cadastro/perfil_edit.html'
@@ -43,7 +40,7 @@ class PerfilUpdateView(LoginRequiredMixin, TemplateView):
             form.save()
             perfil.save()
             messages.success(request, "Dados alterados com sucesso!")
-            return HttpResponseRedirect(reverse_lazy('perfil'))
+            return HttpResponseRedirect(reverse_lazy('lista_jogos'))
         
         context = self.get_context_data(perfil=perfil, form=form)
         return self.render_to_response(context)

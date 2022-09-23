@@ -9,7 +9,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 class JogosList(LoginRequiredMixin, ListView):
     model = Jogos
     template_name = 'jogos/jogos_list.html'
-    queryset = Jogos.objects.order_by('nome_do_jogo').all()
+    queryset = Jogos.objects.order_by('nome_do_jogo')
     login_url = reverse_lazy('login')
     paginate_by = 1
     

@@ -5,3 +5,5 @@
 ## Também é possivel adicionar/editar sua foto de perfil separadamente das fotos dos jogos adicionados, no perfil pode trocar o nome do usuario e o seu email tambem.
 
 ## É possivel tambem fazer paginação entre os jogos adicionados já que só é possivel visualizar um jogo por pagina por questão de responsividade.
+
+## Caso queira pode trocar a senha sabendo a senha antiga e obedecendo os critérios solicitados.

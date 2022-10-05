@@ -1,1 +1,1 @@
-web: gunicorn cadastro_pessoas.wsgi
+web: gunicorn Cadastro_Pessoas.wsgi

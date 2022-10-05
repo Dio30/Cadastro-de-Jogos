@@ -132,7 +132,7 @@ USE_TZ = True
 
 USE_L10N = True
 
-SHORT_DATE_FORMAT = 'd/m/Y'
+SHORT_DATE_FORMAT = '%d/%m/%Y'
 
 
 # Static files (CSS, JavaScript, Images)

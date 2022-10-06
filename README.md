@@ -6,4 +6,6 @@
 
 ## É possivel tambem fazer paginação entre os jogos adicionados já que só é possivel visualizar um jogo por pagina por questão de responsividade.
 
-## Caso queira pode trocar a senha sabendo a senha antiga e obedecendo os critérios solicitados.
+## Caso queira pode trocar a senha sabendo a senha antiga e obedecendo os critérios solicitados
+
+## Quando é cadastrado um usuario e um email se quiser esse usuario se torna unico e o email quando inserido também, acredito que em questão de segurança e privacidade são questões muito importantes.

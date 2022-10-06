@@ -11,7 +11,7 @@ escolhas = [
 ]
 
 class Jogos(models.Model):
-    nome_do_jogo = models.CharField(max_length=200, verbose_name='Jogo:', unique=False)
+    nome_do_jogo = models.CharField(max_length=200, verbose_name='Jogo:')
     estilo_do_jogo = models.CharField(max_length=50, default='Outros', choices=escolhas, verbose_name='Estilo:')
     imagem = models.ImageField(upload_to='jogos', null=True, blank=True, verbose_name='Imagem:')
     usuario = models.ForeignKey(User, on_delete=models.CASCADE)

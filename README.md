@@ -9,3 +9,5 @@
 ## Caso queira pode trocar a senha sabendo a senha antiga e obedecendo os critérios solicitados
 
 ## Quando é cadastrado um usuario e um email se quiser esse usuario se torna unico e o email quando inserido também, acredito que em questão de segurança e privacidade são questões muito importantes.
+
+## Esse projeto é mais voltado para pessoas que gostam de jogos e que queiram mantê-los guardados em um site e também serve para simular uma loja de jogos que queira manter seu estoque atualizado.

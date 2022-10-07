@@ -15,7 +15,6 @@ import os
 from django.contrib.messages import constants as messages
 from decouple import config
 import dj_database_url
-from django.db import connection
 
 MESSAGE_TAGS = {
         messages.DEBUG: 'alert-secondary',
@@ -105,6 +104,9 @@ DATABASES = {
         'PASSWORD': config('password'), # senha do usuario do banco de dados
         'HOST': config('host'), # host do banco de dados
         'PORT': '5432',
+        'OPTIONS': {
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+        },
     }
 }
 
@@ -181,4 +183,4 @@ DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
 AWS_S3_REGION_NAME = 'us-east-1'
 AWS_S3_SIGNATURE_VERSION = 's3v4'
 
-DATABASES['default'] = dj_database_url.config(default=DATABASE_URL)
+DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True, default=DATABASE_URL)

@@ -15,6 +15,7 @@ import os
 from django.contrib.messages import constants as messages
 from decouple import config
 import dj_database_url
+from django.db import connection
 
 MESSAGE_TAGS = {
         messages.DEBUG: 'alert-secondary',
@@ -98,7 +99,7 @@ WSGI_APPLICATION = 'Cadastro_Pessoas.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': config('name'), # nome do banco de dados
         'USER': config('user'), # nome do usuario do banco de dados
         'PASSWORD': config('password'), # senha do usuario do banco de dados
@@ -107,6 +108,7 @@ DATABASES = {
     }
 }
 
+DATABASE_URL = 'postgresql://<postgresql>'
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -179,4 +181,4 @@ DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
 AWS_S3_REGION_NAME = 'us-east-1'
 AWS_S3_SIGNATURE_VERSION = 's3v4'
 
-DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True, engine=None)
+DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True, default=DATABASE_URL)

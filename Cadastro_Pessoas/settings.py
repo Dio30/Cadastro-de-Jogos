@@ -14,7 +14,7 @@ from pathlib import Path
 import os
 from django.contrib.messages import constants as messages
 from decouple import config
-import dj_database_url
+from dj_database_url import parse as dburl
 
 MESSAGE_TAGS = {
         messages.DEBUG: 'alert-secondary',
@@ -96,24 +96,8 @@ WSGI_APPLICATION = 'Cadastro_Pessoas.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-ON_HEROKU = os.environ.get('ON_HEROKU')
-HEROKU_SERVER = os.environ.get('HEROKU_SERVER')
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': config('name'), # nome do banco de dados
-        'USER': config('user'), # nome do usuario do banco de dados
-        'PASSWORD': config('password'), # senha do usuario do banco de dados
-        'HOST': config('host'), # host do banco de dados
-        'PORT': '5432',
-    }
-}
-
-if ON_HEROKU:
-    DATABASE_URL = 'postgresql://<postgresql>'
-else:
-    DATABASE_URL = 'sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite3')
+default_dburl = 'sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite3')
+DATABASES = { 'default': config('DATABASE_URL', default=default_dburl, cast=dburl), }
 
 
 CONN_HEALTH_CHECKS = True
@@ -184,5 +168,3 @@ AWS_DEFAULT_ACL = None
 DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
 AWS_S3_REGION_NAME = 'us-east-1'
 AWS_S3_SIGNATURE_VERSION = 's3v4'
-
-DATABASES = {'default' : dj_database_url.config(conn_max_age=600, default=DATABASE_URL)}

@@ -59,7 +59,6 @@ INSTALLED_APPS = [
     # meus apps
     'Usuarios',
     'Jogos',
-    'django_cleanup.apps.CleanupConfig',
 ]
 
 MIDDLEWARE = [

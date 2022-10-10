@@ -1,1 +1,1 @@
-web: gunicorn Cadastro_Pessoas.wsgi
+web: python manage.py migrate && gunicorn Cadastro_Pessoas.wsgi

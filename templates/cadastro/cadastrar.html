@@ -26,7 +26,7 @@
                             <div class="form-label-group">
                                 <span class="fa fa-user user"></span>
                                 <input type="text" name="username" minlength="3" class="form-control" id="inputUser" spellcheck="off" 
-                                placeholder="Usuário" autofocus required>
+                                placeholder="Usuário" autocapitalize= "off" autofocus required>
                                 <label for="inputUser">Usuário</label>
                                 <p class="text_muted2">Obrigatório 3 caracteres ou mais. Letras, números e @/./+/-/_ apenas.</p>
                                 <font class='mytext'>{{ form.username.errors }}</font>
@@ -34,7 +34,8 @@
                            
                             <div class="form-label-group">
                                 <span class="fa fa-envelope"></span>
-                                <input type="email" name="email" class="form-control" id="inputUser" placeholder="Email">
+                                <input type="email" name="email" class="form-control" id="inputUser" 
+                                placeholder="Email" autocapitalize= "off">
                                 <label for="inputUser">Email</label>
                                 <p class="text_muted2">Insira um email valido. Ex: exemplo@exemplo.com</p>
                                 <font class='mytext'>{{ form.email.errors }}</font>

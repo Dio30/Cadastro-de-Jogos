@@ -30,13 +30,15 @@ class PerfilUpdate(forms.ModelForm):
         
 class PerfilForm(forms.ModelForm):
     email = forms.EmailField(help_text='Insira um email valido.', required=False, widget=forms.EmailInput
-                             (attrs={'spellcheck':'false', 'placeholder':'Email', 'id':'inputUser', 'class':'form-control'})) #input
+                             (attrs={'spellcheck':'false', 'placeholder':'Email', 
+                                     'id':'inputUser', 'class':'form-control', 'autocapitalize': 'off'})) #input
     class Meta:
         model = User
         fields = ['username', 'email',]
         widgets = {
             'username': forms.TextInput
-            (attrs={'spellcheck':'false', 'autofocus':'on', 'id':'inputUser', 'class':'form-control', 'placeholder':'Usuário'}), #input
+            (attrs={'spellcheck':'false', 'autofocus':'on', 'id':'inputUser', 'class':'form-control', 
+                    'placeholder':'Usuário', 'autocapitalize': 'off'}), #input
             }
 
 class PasswordForm(PasswordChangeForm):

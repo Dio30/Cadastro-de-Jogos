@@ -49,7 +49,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django.contrib.postgres',
     
     # para estilizar a página
     'crispy_forms',
@@ -95,7 +94,7 @@ WSGI_APPLICATION = 'Cadastro_Pessoas.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-default_dburl = 'sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite3')
+default_dburl = 'sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite3') # para separar o banco de dados na hora de fazer deploy(produção)
 DATABASES = { 'default': config('DATABASE_URL', default=default_dburl, cast=dburl), }
 
 
@@ -149,6 +148,7 @@ LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'lista_jogos'
 LOGOUT_REDIRECT_URL = 'login'
 
+SESSION_COOKIE_AGE = 172800
 CSRF_COOKIE_SECURE = True
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 SESSION_COOKIE_SECURE = True

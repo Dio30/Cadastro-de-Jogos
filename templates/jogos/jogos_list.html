@@ -95,13 +95,14 @@
 <ul class="pagination justify-content-center">
     {% if page_obj.has_previous %}
         <li class="page-item">
-            <a class="page-link" href="?page1">Primeira</a>
+            <a class="page-link" href='{% url "lista_jogos" %}?page=1'>Primeira</a>
         </li>
 
         <li class="page-item">
-            <a class="page-link" href="?page={{ page_obj.previous_page_number }}">&laquo;</a>
+            <a class="page-link mx-1" href="{% url 'lista_jogos' %}?page={{ page_obj.previous_page_number }}">&laquo;</a>
         </li>
 
+    {% else %}
     {% endif %}
 
     <li class="page-item">
@@ -110,13 +111,30 @@
 
     {% if page_obj.has_next %}
         <li class="page-item">
-            <a class="page-link" href="?page={{ page_obj.next_page_number }}">&raquo;</a>
+            <a class="page-link mx-1" href="{% url 'lista_jogos' %}?page={{ page_obj.next_page_number }}">&raquo;</a>
         </li>
-
         <li class="page-item">
-            <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">Ultima</a>
+            <a class="page-link" href='{% url "lista_jogos" %}?page={{ page_obj.paginator.num_pages }}'>Ultima</a>
         </li>
+       
+    {% else %}
     {% endif %}
+</ul>
+
+<br>
+
+<ul class="pagination justify-content-center">
+    {% for i in page_obj.paginator.page_range %}
+        {% if i == page_obj.number %}
+        <li class="page-item active mx-1">
+            <a href="#" class="page-link">{{ i }}</a>
+        </li>
+        {% else %}
+        <li class="page-item mx-1">
+            <a href="?page={{ i }}" class="page-link">{{ i }}</a>
+        </li>
+        {% endif %}
+    {% endfor %}
 </ul>
 
 {% endblock %}

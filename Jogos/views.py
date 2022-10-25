@@ -1,5 +1,6 @@
 from .forms import JogosForm
 from .models import Jogos
+from .pagination import MyPaginator
 from django.urls import reverse_lazy
 from django.shortcuts import get_object_or_404
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
@@ -11,6 +12,7 @@ class JogosList(LoginRequiredMixin, ListView):
     template_name = 'jogos/jogos_list.html'
     queryset = Jogos.objects.order_by('nome_do_jogo')
     login_url = reverse_lazy('login')
+    paginator_class = MyPaginator
     paginate_by = 1
     
     def get_queryset(self): # para cada usuario ser unico e não ter acesso a qualquer coisa de outros usuarios cadastrados

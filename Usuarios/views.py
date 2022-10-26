@@ -40,7 +40,7 @@ class PerfilUpdateView(LoginRequiredMixin, TemplateView):
             form.save()
             perfil.save()
             messages.success(request, "Dados alterados com sucesso!")
-            return HttpResponseRedirect(reverse_lazy('lista_jogos'))
+            return HttpResponseRedirect(reverse_lazy('perfil_edit'))
         
         context = self.get_context_data(perfil=perfil, form=form)
         return self.render_to_response(context)

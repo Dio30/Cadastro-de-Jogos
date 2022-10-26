@@ -28,17 +28,17 @@ class PerfilUpdate(forms.ModelForm):
         fields = '__all__'
         exclude = ['usuario',]
         
-class PerfilForm(forms.ModelForm):
-    email = forms.EmailField(help_text='Insira um email valido.', required=False, widget=forms.EmailInput
-                             (attrs={'spellcheck':'false', 'placeholder':'Email', 
-                                     'id':'inputUser', 'class':'form-control', 'autocapitalize': 'off'})) #input
+class PerfilForm(forms.ModelForm):                         
     class Meta:
         model = User
-        fields = ['username', 'email',]
+        fields = ['username', 'email']
         widgets = {
             'username': forms.TextInput
             (attrs={'spellcheck':'false', 'autofocus':'on', 'id':'inputUser', 'class':'form-control', 
                     'placeholder':'Usuário', 'autocapitalize': 'off'}), #input
+            
+            'email': forms.EmailInput(attrs={'spellcheck':'false', 'placeholder':'Email', 
+                                     'id':'inputUser', 'class':'form-control', 'autocapitalize': 'off'}) #input
             }
 
 class PasswordForm(PasswordChangeForm):

@@ -1,9 +1,7 @@
-from typing import IO
 from django.test import TestCase
 from django.urls import reverse
 from django.contrib.auth.models import User
 from ..models import Jogos
-import json
 
 class JogoListViewTestCase(TestCase):
 # criando um usuario antes de fazer o test pois a view só pode ser acessada se o usuario estiver autenticado   

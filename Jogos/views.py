@@ -19,6 +19,16 @@ class JogosList(LoginRequiredMixin, ListView):
         self.object_list = Jogos.objects.filter(usuario=self.request.user)
         return self.object_list
     
+    def get(self, request, *args, **kwargs): #para pesquisar pelo nome do carro
+        pesquisar = self.request.GET.get('nome_do_jogo')
+        if pesquisar:
+            self.object_list = self.get_queryset().filter(nome_do_jogo__icontains=pesquisar)
+        else:
+            self.object_list = self.get_queryset()
+            
+        context = self.get_context_data(object_list=self.object_list)
+        return self.render_to_response(context)
+    
 class JogosDetail(LoginRequiredMixin, DetailView):
     queryset = Jogos.objects.all()
     login_url = reverse_lazy('login')

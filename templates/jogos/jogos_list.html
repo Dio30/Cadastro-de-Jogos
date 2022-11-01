@@ -12,6 +12,16 @@
 
 {% include 'nav-bar.html' %}
 
+<br>
+<center><form method="GET" action=".">
+    <div id="divBusca">
+        <input type="text" id="txtBusca" name="nome_do_jogo" value="{{ request.GET.nome_do_jogo }}" 
+        autocomplete="off" placeholder="Buscar por jogo">
+        <button type="submit" id="btnBusca"><i class="fa fa-search" aria-hidden="true"></i></button>
+        <a href="{% url 'lista_jogos' %}" class="mysearchclear">Voltar</a>
+    </div>
+</form></center>
+
 {% for jogo in object_list %}
 
 <center><br>
@@ -94,15 +104,28 @@
 <br>
 <ul class="pagination justify-content-center">
     {% if page_obj.has_previous %}
+
+        {% if request.GET.nome_do_jogo %}
+
         <li class="page-item">
-            <a class="page-link" href='{% url "lista_jogos" %}?page=1'>Primeira</a>
+            <a class="page-link" href="?page=1&nome_do_jogo={{ request.GET.nome_do_jogo }}">Primeira</a>
         </li>
 
         <li class="page-item">
-            <a class="page-link mx-1" href="{% url 'lista_jogos' %}?page={{ page_obj.previous_page_number }}">&laquo;</a>
+            <a class="page-link" href="?page={{ page_obj.previous_page_number }}&nome_do_jogo={{ request.GET.nome_do_jogo }}">&laquo;</a>
         </li>
+        
+        {% else %}
+            <li class="page-item">
+                <a class="page-link" href='{% url "lista_jogos" %}?page=1'>Primeira</a>
+            </li>
 
-    {% else %}
+            <li class="page-item">
+                <a class="page-link mx-1" href="{% url 'lista_jogos' %}?page={{ page_obj.previous_page_number }}">&laquo;</a>
+            </li>
+
+        {% endif %}
+
     {% endif %}
 
     <li class="page-item">
@@ -110,20 +133,33 @@
     </li>
 
     {% if page_obj.has_next %}
+
+        {% if request.GET.nome_do_jogo %}
+
+        <li class="page-item">
+            <a class="page-link" href="?page={{ page_obj.next_page_number }}&nome_do_jogo={{ request.GET.nome_do_jogo }}">&raquo;</a>
+        </li>
+
+        <li class="page-item">
+            <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}&nome_do_jogo={{ request.GET.nome_do_jogo }}">Última</a>
+        </li>
+        
+        {% else %}
         <li class="page-item">
             <a class="page-link mx-1" href="{% url 'lista_jogos' %}?page={{ page_obj.next_page_number }}">&raquo;</a>
         </li>
         <li class="page-item">
-            <a class="page-link" href='{% url "lista_jogos" %}?page={{ page_obj.paginator.num_pages }}'>Ultima</a>
+            <a class="page-link" href="{% url 'lista_jogos' %}?page={{ page_obj.paginator.num_pages }}">Ultima</a>
         </li>
-       
-    {% else %}
+
+        {% endif %}
+
     {% endif %}
 </ul>
 
 <br>
 
-<ul class="pagination justify-content-center">
+<!--<ul class="pagination justify-content-center">
     {% for i in page_obj.paginator.page_range %}
         {% if i == page_obj.number %}
         <li class="page-item active mx-1">
@@ -135,6 +171,6 @@
         </li>
         {% endif %}
     {% endfor %}
-</ul>
+</ul>-->
 
 {% endblock %}

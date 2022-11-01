@@ -37,7 +37,7 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = ['127.0.0.1', 'site-projeto-jogos.herokuapp.com', 'cadastro-de-jogos.up.railway.app']
+ALLOWED_HOSTS = ['127.0.0.1', 'cadastro-de-jogos.up.railway.app']
 
 
 # Application definition
@@ -138,9 +138,9 @@ USE_THOUSAND_SEPARATOR = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATICFILES_DIRS = [ BASE_DIR / 'static']
+STATICFILES_DIRS = [ BASE_DIR / 'static',]
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -152,7 +152,7 @@ LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'lista_jogos'
 LOGOUT_REDIRECT_URL = 'login'
 
-SESSION_COOKIE_AGE = 172800
+SESSION_COOKIE_AGE = 7200
 CSRF_COOKIE_SECURE = True
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 SESSION_COOKIE_SECURE = True

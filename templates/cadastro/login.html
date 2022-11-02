@@ -42,8 +42,8 @@
                                 <input name="password" type="password" placeholder="Senha" id="senha" class="form-control" required>
                                 <label>Senha</label>
                                 <img src="{% static 'imagens/eye.svg' %}" class="icon" onclick="mostrarSenha()">
+                                <a href="{% url 'senha_reset' %}" class="super_a" style="padding-left: 2px;">Esqueceu a senha?</a>
                             </div>
-                            
                             <center><button type="submit" class="btn btn-lg btn-dark mybtn btn_submit">Entrar
                                 <span></span>
                                 <span></span>
@@ -51,7 +51,7 @@
                                 <span></span>
                             </button></center>
                             <br>
-                            <center>Não tem uma conta? <a href="{% url 'cadastrar' %}">Cadastre-se aqui</a>.</center>
+                            <center>Não tem uma conta? <a href="{% url 'cadastrar' %}" class="super_a">Cadastre-se aqui</a>.</center>
                             <input type="hidden" name="next" value="{{ next }}">
                         </form>
                     </div>

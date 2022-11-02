@@ -140,7 +140,7 @@ USE_THOUSAND_SEPARATOR = True
 
 STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATICFILES_DIRS = [ BASE_DIR / 'static',]
+STATICFILES_DIRS = [ BASE_DIR / 'static']
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -152,11 +152,20 @@ LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'lista_jogos'
 LOGOUT_REDIRECT_URL = 'login'
 
-SESSION_COOKIE_AGE = 7200
+SESSION_COOKIE_AGE = 3600
 CSRF_COOKIE_SECURE = True
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 SESSION_COOKIE_SECURE = True
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+PASSWORD_RESET_TIMEOUT = 3600 # tempo que o link para resetar o email fica ativo (1 hora)
+
+# Para enviar emails em produção
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD') #senha criada no app no gmail em autenticação em 2 fatores
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST = 'smtp.gmail.com'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field

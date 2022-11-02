@@ -1,0 +1,19 @@
+
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %} Confirmação da Nova Senha {% endblock %}
+
+{% block main %}
+
+{% include 'mensagens.html' %}
+
+<center><h3><font color="white">Confirmação da Nova Senha</h3></center></font><br><br>
+
+<center><b><font size=+1 color="white">A sua senha foi alterada com sucesso.</font></center></b><br><br>
+
+<center><b><font size=+1 color="white"><a href="{% url 'login' %}" class=".my_a">Clique aqui</a> 
+    para acessar a sua conta com a nova senha.</font></b></center>
+
+{% endblock %}

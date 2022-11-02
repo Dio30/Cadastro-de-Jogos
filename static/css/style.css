@@ -69,6 +69,7 @@ box-shadow: #094c66 5px 5px 5px;
   padding-left: 10px;
   padding-right: 2px;
   letter-spacing: 0.5px;
+  
 }
 
 .icon{ /* icon olho para mostrar a senha */
@@ -79,6 +80,10 @@ box-shadow: #094c66 5px 5px 5px;
   width: 30px;
   height: 30px;
   cursor: pointer;
+}
+
+.super_a{
+  color:#064bc4;
 }
 
 .perfil{ /* para o perfil */

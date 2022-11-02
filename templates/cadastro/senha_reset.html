@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% load crispy_forms_tags %}
+
+{% block title %} Redefinir Senha {% endblock %}
+
+{% block main %}
+
+<div class="form-content my-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-5">
+                <div class="card shadow-lg border-1 rounded-lg my-4">
+                    <div class="card-header justify-content-center mycardheader">
+                        <h2 class="font-weight-dark text-center">Redefinir Senha</h2>
+                    </div>
+                    <div class="card-body mybody">
+                        <form method="POST">
+                            {% csrf_token %}
+
+                            {{ form|crispy }}
+                            <input type='submit' class="btn btn-primary mybtn" value='Enviar'>
+                            <a href="{% url 'login' %}" class="btn btn-dark mx-3 mybtn" style="position:absolute; right: 0;">Voltar</a>
+                            </form>
+                            <br>
+                            <li>Por favor insira um email cadastrado, caso não tenha e 
+                                esqueceu a senha terá que fazer um novo cadastro com um email valido <a href="{% url 'cadastrar' %}" 
+                                class="super_a">clicando aqui</a>.</b></li>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

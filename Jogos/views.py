@@ -19,7 +19,10 @@ class JogosList(LoginRequiredMixin, ListView):
     paginate_by = 1
     
     def get_queryset(self): # para cada usuario ser unico e não ter acesso a qualquer coisa de outros usuarios cadastrados
-        self.object_list = Jogos.objects.filter(usuario=self.request.user)
+        if self.request.user.is_superuser:
+            self.object_list = Jogos.objects.all()
+        else:
+            self.object_list = Jogos.objects.filter(usuario=self.request.user)
         return self.object_list
     
     def get(self, request, *args, **kwargs): #para pesquisar pelo nome do carro
@@ -37,7 +40,10 @@ class JogosDetail(LoginRequiredMixin, DetailView):
     login_url = reverse_lazy('login')
     
     def get_object(self, queryset=None):
-        self.object = get_object_or_404(Jogos, pk=self.kwargs['pk'], usuario=self.request.user)
+        if self.request.user.is_superuser:
+            self.object = get_object_or_404(Jogos, pk=self.kwargs['pk'])
+        else:
+            self.object = get_object_or_404(Jogos, pk=self.kwargs['pk'], usuario=self.request.user)
         return self.object
     
 class JogosNew(LoginRequiredMixin, SuccessMessageMixin, CreateView):
@@ -66,7 +72,10 @@ class JogosEdit(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     login_url = reverse_lazy('login')
     
     def get_object(self, queryset=None):
-        self.object = get_object_or_404(Jogos, pk=self.kwargs['pk'], usuario=self.request.user)
+        if self.request.user.is_superuser:
+            self.object = get_object_or_404(Jogos, pk=self.kwargs['pk'])
+        else:
+            self.object = get_object_or_404(Jogos, pk=self.kwargs['pk'], usuario=self.request.user)
         return self.object
     
     def get_context_data(self, *args ,**kwargs):
@@ -82,7 +91,10 @@ class JogosDelete(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
     login_url = reverse_lazy('login')
     
     def get_object(self, queryset=None):
-        self.object = get_object_or_404(Jogos, pk=self.kwargs['pk'], usuario=self.request.user)
+        if self.request.user.is_superuser:
+            self.object = get_object_or_404(Jogos, pk=self.kwargs['pk'])
+        else:
+            self.object = get_object_or_404(Jogos, pk=self.kwargs['pk'], usuario=self.request.user)
         return self.object
 
 def enviar_email(request):

@@ -7,4 +7,5 @@ urlpatterns = [
     path('imagem/<int:pk>/', views.JogosDetail.as_view(), name='imagem'),
     path('editar_jogo/<int:pk>/', views.JogosEdit.as_view(), name='editar'),
     path('deletar/<int:pk>/', views.JogosDelete.as_view(), name='deletar'),
+    path('enviar_email', views.enviar_email, name='enviar_email')
 ]

@@ -6,6 +6,8 @@
 
 {% block main %}
 
+{% if user.is_authenticated %}
+
 <br><nav class="navbar navbar-dark mynav">
     <ul class="nav justify-content-start">
         <img src="{{ request.user.perfil.image_url|default_if_none:'/static/imagens/74472.png' }}" 
@@ -25,6 +27,7 @@
                 <span class="fa fa-home home"></span><a class="dropdown-item" href="{% url 'lista_jogos' %}">Pagina Inicial</a>
                 <span class="fa fa-user user2"></span><a class="dropdown-item" href="{% url 'perfil_edit' %}">Editar Perfil</a>
                 <span class="fa fa-lock lock1"></span><a class="dropdown-item" href="{% url 'trocar_senha' %}">Trocar Senha</a>
+                <span class="fa fa-envelope envelope2"></span><a class="dropdown-item" href="{% url 'enviar_email' %}">Contato</a>
                 <div class="dropdown-divider"></div>
                 {% if user.is_superuser %}
                     <span class="fa fa-home home2"></span><a class="dropdown-item" href="https://cadastro-de-jogos.up.railway.app/admin">Config Admin</a>
@@ -35,5 +38,33 @@
         </div>
     </ul>
 </nav>
+
+{% else %}
+
+<br><nav class="navbar navbar-dark mynav">
+    <ul class="nav justify-content-start">
+        <img src="/static/Dtafalonso-Android-L-Play-Games.ico" 
+        class="myimg" height="40px" width="40px">
+    </ul>
+
+    <ul class="nav justify-content-center">
+        <font size="5"><b>Bem vindo</b></font>
+    </ul>
+
+    <ul class="nav justify-content-end">
+        <div class="dropdown">
+            <button class="btn btn-secondary" type="button" data-toggle="dropdown" aria-expanded="false">
+                <i class="fa fa-bars" aria-hidden="true"></i>
+            </button>
+            <div class="dropdown-menu dropdown-menu-right mydrop">
+                <span class="fa fa-envelope envelope"></span><a class="dropdown-item" href="{% url 'enviar_email' %}">Contato</a>
+                <span class="fa fa-linkedin-square user2"></span><a class="dropdown-item" href="https://www.linkedin.com/in/dione-padilha-a99864234/" target="_blank">LinkedIn</a>
+                <span class="fa fa-github-square lock1"></span><a class="dropdown-item" href="https://github.com/Dio30" target="_blank">GitHub</a>
+            </div>
+        </div>
+    </ul>
+</nav>
+
+{% endif %}
 
 {% endblock %}

@@ -11,6 +11,21 @@ body{ /* o corpo do site */
     min-height: 100vh;
 }
 
+.footer{
+  font-weight: bolder;
+  font-size: 105%;
+  color: #000000;
+  position:absolute;
+  bottom: 0.7rem;
+  left: 0.5rem;
+  right: 0.5rem;
+  letter-spacing: 1px;
+  text-align: center;
+  border: 2px solid #000000;
+  background-color:#999999;
+  border-radius: 20px;
+}
+
 .mybtn{ /* botões dinamicos */
   color: #ffffff;
   box-shadow: #03fee17d 4px 3px 5px;
@@ -303,8 +318,22 @@ box-shadow: #094c66 5px 5px 5px;
     bottom: 0.91rem;
     left: 5px;
 }
+
+.envelope{ /* icon envelope no dropdown no login*/
+  position: absolute;
+  top: 1.1rem;
+  left: 4px;
+  font-size: 90%;
+}
+
+.envelope2{ /* icon envelope no dropdown no login*/
+  position: absolute;
+  top: 7.1rem;
+  left: 4px;
+  font-size: 80%;
+}
   
-.fa-envelope{ /* icon email na registro */
+.envelope3{ /* icon email na registro */
     position: absolute;
     top: .99rem;
     left: 10px;

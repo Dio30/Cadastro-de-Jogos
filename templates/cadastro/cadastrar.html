@@ -10,11 +10,13 @@
 
 {% include 'mensagens.html' %}
 
-<div class="form-content my-2">
+{% include 'nav-bar.html' %}
+
+<div class="form-content">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-8">
-                <div class="card shadow-lg border-1 rounded-lg mt-lg-2 mb-lg-2">
+                <div class="card shadow-lg border-1 rounded-lg mt-3 my-4">
                     <div class="card-header justify-content-center mycardheader">
                         <h3 class="font-weight-dark text-center">Cadastrar Novo Usuário</h3>
                     </div>
@@ -33,7 +35,7 @@
                             </div>
                            
                             <div class="form-label-group">
-                                <span class="fa fa-envelope"></span>
+                                <span class="fa fa-envelope envelope3"></span>
                                 <input type="email" name="email" class="form-control" id="inputUser" 
                                 placeholder="Email" autocapitalize= "off">
                                 <label for="inputUser">Email</label>
@@ -66,13 +68,14 @@
                                 <p class="text_muted2">Informe a mesma senha informada anteriormente, para verificação.</p>
                                 <font class='mytext'>{{ form.password2.errors }}</font>
                             </div>
-                            <center><button type="submit" class="btn btn-dark mx-2 mybtn btn_submit">Cadastrar
+                            <button type="submit" class="btn btn-dark mybtn btn_submit">Cadastrar
                                 <span></span>
                                 <span></span>
                                 <span></span>
                                 <span></span>
                             </button>
-                            <a href="{% url 'login' %}" class="btn btn-primary mx-2 mybtn btn_submit">Voltar</a></center>
+                            <a href="{% url 'login' %}" class="btn btn-primary mx-3 mybtn btn_submit" 
+                            style="position:absolute; right:1px;">Voltar</a>
                         </form>
                     </div>
                 </div>
@@ -81,4 +84,10 @@
     </div>
 </div>
 
+{% endblock %}
+
+{% block footer %}
+    <br><br><footer class="footer">
+        Desenvolvido por Dione Rafael Padilha
+    </footer>
 {% endblock %}

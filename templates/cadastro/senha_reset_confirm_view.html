@@ -13,7 +13,7 @@
 
 {% if validlink %}
 
-<div class="form-content my-5">
+<div class="form-content">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-5">
@@ -60,7 +60,7 @@
 </div>
 
 {% else %}
-<div class="form-content my-5">
+<div class="form-content">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-5">
@@ -81,4 +81,10 @@
 
 {% endif %}
 
+{% endblock %}
+
+{% block footer %}
+    <br><br><br><footer class="footer">
+        Desenvolvido por Dione Rafael Padilha
+    </footer>
 {% endblock %}

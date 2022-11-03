@@ -1,11 +1,14 @@
+from django.conf import settings
 from .forms import JogosForm
 from .models import Jogos
 from .pagination import MyPaginator
 from django.urls import reverse_lazy
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, render
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.core.mail import EmailMessage
+from django.contrib import messages
 
 class JogosList(LoginRequiredMixin, ListView):
     model = Jogos
@@ -81,3 +84,22 @@ class JogosDelete(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
     def get_object(self, queryset=None):
         self.object = get_object_or_404(Jogos, pk=self.kwargs['pk'], usuario=self.request.user)
         return self.object
+
+def enviar_email(request):
+    if request.method == 'POST':
+        assunto = request.POST.get('assunto')
+        mensagem = request.POST.get('mensagem')
+        email = request.POST.get('email')
+        enviar=EmailMessage(subject=assunto, body=mensagem, from_email=settings.DEFAULT_FROM_EMAIL, 
+                            to=[settings.DEFAULT_FROM_EMAIL], reply_to=[email])
+        enviar.send(fail_silently=False)
+        messages.success(request, "Email enviado com sucesso, muito obrigado pelo contato!")
+        context = {
+            "assunto":assunto,
+            "mensagem":mensagem,
+            "email":email,
+        }
+        return render(request, "jogos/enviar_email.html", context)
+    
+    else:
+        return render(request, "jogos/enviar_email.html")

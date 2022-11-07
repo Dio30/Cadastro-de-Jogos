@@ -1,6 +1,6 @@
 # Como utilizar
 
-## crie uma pasta com um nome a sua escolha e depois digite no prompt de comando: code . ou outro IDE que você use
+## Crie uma pasta com um nome a sua escolha e depois digite no prompt de comando: code . ou outro IDE que você use
 
 ## Clonar repositório
 

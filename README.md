@@ -1,3 +1,30 @@
+# Como utilizar
+
+## <li>Crie uma pasta com um nome a sua escolha e depois digite no prompt de comando: code . ou outro IDE que você use</li>
+
+## Clonar repositório
+
+## <li>git clone https://github.com/Dio30/Cadastro-de-Jogos.git</li>
+
+# Preparando o ambiente virtual
+
+## <li>python -m venv venv </li>
+## <li>.\venv\Scripts\activate </li>
+## <li>pip install django </li>
+## <li>pip install -r requirements.txt </li>
+
+# Rode as migrações
+
+## <li>python manage.py migrate </li>
+
+# Criar superusuario
+
+## <li>python manage.py createsuperuser</li>
+
+# Iniciando o servidor
+
+## <li>python manage.py runserver</li>
+
 # Cadastro de Jogos
 
 ## Foi feito um CRUD de jogos em django sendo responsivo para celular, pode visualizar imagens atraves do modal sem sair da pagina e para deletar um jogo é possivel através do modal tambem. No CRUD é possivel visualizar, adicionar, editar e deletar jogos selecionados e aparecerá uma mensagem no topo da pagina se a ação foi bem sucedida.

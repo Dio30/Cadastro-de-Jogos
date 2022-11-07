@@ -1,3 +1,28 @@
+# Como utilizar
+
+## Clonar repositório
+
+## git clone https://github.com/mwkresolve/dkconf.git
+
+# Preparando o ambiente virtual
+
+## python -m venv venv 
+## .\venv\Scripts\activate
+## pip install django
+## pip install -r requirements.txt
+
+# Roda as migrações
+
+## python manage.py migrate
+
+# Criar superusuario
+
+## python manage.py createsuperuser
+
+# Iniciando o servidor
+
+## python manage.py runserver
+
 # Cadastro de Jogos
 
 ## Foi feito um CRUD de jogos em django sendo responsivo para celular, pode visualizar imagens atraves do modal sem sair da pagina e para deletar um jogo é possivel através do modal tambem. No CRUD é possivel visualizar, adicionar, editar e deletar jogos selecionados e aparecerá uma mensagem no topo da pagina se a ação foi bem sucedida.

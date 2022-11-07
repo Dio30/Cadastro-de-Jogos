@@ -1,29 +1,29 @@
 # Como utilizar
 
-## Crie uma pasta com um nome a sua escolha e depois digite no prompt de comando: code . ou outro IDE que você use
+## <li>Crie uma pasta com um nome a sua escolha e depois digite no prompt de comando: code . ou outro IDE que você use</li>
 
 ## Clonar repositório
 
-## git clone https://github.com/Dio30/Cadastro-de-Jogos.git
+## <li>git clone https://github.com/Dio30/Cadastro-de-Jogos.git</li>
 
 # Preparando o ambiente virtual
 
-## python -m venv venv 
-## .\venv\Scripts\activate
-## pip install django
-## pip install -r requirements.txt
+## <li>python -m venv venv </li>
+## <li>.\venv\Scripts\activate </li>
+## <li>pip install django </li>
+## <li>pip install -r requirements.txt </li>
 
 # Rode as migrações
 
-## python manage.py migrate
+## <li>python manage.py migrate </li>
 
 # Criar superusuario
 
-## python manage.py createsuperuser
+## <li>python manage.py createsuperuser</li>
 
 # Iniciando o servidor
 
-## python manage.py runserver
+## <li>python manage.py runserver</li>
 
 # Cadastro de Jogos
 

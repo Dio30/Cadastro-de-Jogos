@@ -9,21 +9,23 @@ body{ /* o corpo do site */
     background-attachment: fixed;
     position: relative;
     min-height: 100vh;
+    width: 100%;
 }
 
 .footer{
   font-weight: bolder;
-  font-size: 105%;
   color: #000000;
   position:absolute;
-  bottom: 0.7rem;
-  left: 0.5rem;
-  right: 0.5rem;
+  bottom: 1rem;
   letter-spacing: 1px;
   text-align: center;
+  align-items: center;
+  justify-content: center;
   border: 2px solid #000000;
   background-color:#999999;
   border-radius: 20px;
+  width: 84%;
+  max-width: 1100px;
 }
 
 .mybtn{ /* botões dinamicos */

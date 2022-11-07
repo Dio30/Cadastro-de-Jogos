@@ -8,8 +8,6 @@
 
 {% include 'mensagens.html' %}
 
-{% if user.is_authenticated %}
-
 <div class="form-content">
     <div class="container">
         <div class="row justify-content-center">
@@ -33,7 +31,11 @@
                             required></textarea>
                             <br>
                             <button type="submit" class="btn btn-success mybtn">Enviar</button>
-                            <a href="{% url 'lista_jogos' %}" class="btn btn-primary mx-3 mybtn" style="position:absolute; right:1px;">Voltar</a>
+                            {% if user.is_authenticated %}
+                                <a href="{% url 'lista_jogos' %}" class="btn btn-primary mx-3 mybtn" style="position:absolute; right:1px;">Voltar</a>
+                            {% else %}
+                                <a href="{% url 'login' %}" class="btn btn-primary mx-3 mybtn" style="position:absolute; right:1px;">Voltar</a>
+                            {% endif %}
                         </form>
                     </div>
                 </div>
@@ -41,42 +43,6 @@
         </div>
     </div>
 </div>
-
-{% else %}
-
-<div class="form-content">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-6">
-                <div class="card shadow-lg border-1 rounded-lg mt-4">
-                    <div class="card-header justify-content-center mycardheader">
-                        <h3 class="font-weight-dark text-center">Enviar email com sugestões de melhorias</h3>
-                    </div>
-                    <div class="card-body mybody">
-                        <form method="POST" action="{% url 'enviar_email' %}">
-                            {% csrf_token %}
-
-                            <label>Assunto:</label>
-                            <input type="text" class="form-control" placeholder="Insira o assunto do email" name="assunto" required>
-                            <br>
-                            <label>Email:</label>
-                            <input type="email" class="form-control" placeholder="Insira o seu email" name="email" required>
-                            <br>
-                            <label>Mensagem:</label>
-                            <textarea class="form-control" placeholder="Insira a sua mensagem" name="mensagem" rows="7" 
-                            required></textarea>
-                            <br>
-                            <button type="submit" class="btn btn-success mybtn">Enviar</button>
-                            <a href="{% url 'login' %}" class="btn btn-primary mx-3 mybtn" style="position:absolute; right:1px;">Voltar</a>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-{% endif %}
 
 {% endblock %}
 

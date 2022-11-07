@@ -1,8 +1,10 @@
 # Como utilizar
 
+## crie uma pasta com um nome a sua escolha e depois digite no prompt de comando: code . ou outro IDE que você use
+
 ## Clonar repositório
 
-## git clone https://github.com/mwkresolve/dkconf.git
+## git clone https://github.com/Dio30/Cadastro-de-Jogos.git
 
 # Preparando o ambiente virtual
 
@@ -11,7 +13,7 @@
 ## pip install django
 ## pip install -r requirements.txt
 
-# Roda as migrações
+# Rode as migrações
 
 ## python manage.py migrate
 

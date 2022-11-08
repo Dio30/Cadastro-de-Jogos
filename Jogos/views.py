@@ -19,7 +19,8 @@ class JogosList(LoginRequiredMixin, ListView):
     paginate_by = 1
     
     def get_queryset(self): # para cada usuario ser unico e não ter acesso a qualquer coisa de outros usuarios cadastrados
-        if self.request.user.is_superuser:
+        user = self.request.user
+        if user.is_superuser:
             self.object_list = Jogos.objects.all()
         else:
             self.object_list = Jogos.objects.filter(usuario=self.request.user)
@@ -40,7 +41,8 @@ class JogosDetail(LoginRequiredMixin, DetailView):
     login_url = reverse_lazy('login')
     
     def get_object(self, queryset=None):
-        if self.request.user.is_superuser:
+        user = self.request.user
+        if user.is_superuser:
             self.object = get_object_or_404(Jogos, pk=self.kwargs['pk'])
         else:
             self.object = get_object_or_404(Jogos, pk=self.kwargs['pk'], usuario=self.request.user)
@@ -72,7 +74,8 @@ class JogosEdit(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     login_url = reverse_lazy('login')
     
     def get_object(self, queryset=None):
-        if self.request.user.is_superuser:
+        user = self.request.user
+        if user.is_superuser:
             self.object = get_object_or_404(Jogos, pk=self.kwargs['pk'])
         else:
             self.object = get_object_or_404(Jogos, pk=self.kwargs['pk'], usuario=self.request.user)
@@ -91,7 +94,8 @@ class JogosDelete(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
     login_url = reverse_lazy('login')
     
     def get_object(self, queryset=None):
-        if self.request.user.is_superuser:
+        user = self.request.user
+        if user.is_superuser:
             self.object = get_object_or_404(Jogos, pk=self.kwargs['pk'])
         else:
             self.object = get_object_or_404(Jogos, pk=self.kwargs['pk'], usuario=self.request.user)

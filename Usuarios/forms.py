@@ -54,7 +54,7 @@ class PasswordForm(PasswordChangeForm):
         fields = ("old_password", "new_password1", "new_password2")
 
 class PasswordReset(PasswordResetForm):
-    email = forms.EmailField(min_length=11,
+    email = forms.EmailField(max_length=100,
         widget=forms.EmailInput(attrs={'class':'form-control', 'placeholder':'Email', 
                                        'autofocus':'on', 'spellcheck':'false'}),
     )

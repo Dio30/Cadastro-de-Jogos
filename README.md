@@ -38,3 +38,5 @@
 ## Quando é cadastrado um usuario e um email se quiser esse usuario se torna unico e o email quando inserido também, acredito que em questão de segurança e privacidade são questões muito importantes.
 
 ## Esse projeto é mais voltado para pessoas que gostam de jogos e que queiram mantê-los guardados em um site e também serve para simular uma loja de jogos que queira manter seu estoque atualizado.
+
+## Foi adicionado uma validação para que quando for redefinir a senha usando o email só será aceito o envio do email se o mesmo estiver cadastrado, se não irá aparecer uma mensagem de erro

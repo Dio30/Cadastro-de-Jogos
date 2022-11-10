@@ -1,5 +1,5 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm
+from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm, PasswordResetForm
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from .models import Perfil
@@ -52,3 +52,16 @@ class PasswordForm(PasswordChangeForm):
     class Meta:
         model = User
         fields = ("old_password", "new_password1", "new_password2")
+
+class PasswordReset(PasswordResetForm):
+    email = forms.EmailField(min_length=11,
+        widget=forms.EmailInput(attrs={'class':'form-control', 'placeholder':'Email', 
+                                       'autofocus':'on', 'spellcheck':'false'}),
+    )
+    
+    def clean_email(self):
+        e_mail = self.cleaned_data['email']
+        user = User.objects.filter(email=e_mail)
+        if not user.exists(): # se o email não existir no banco de dados
+            raise ValidationError("Esse email não está cadastrado.")
+        return e_mail

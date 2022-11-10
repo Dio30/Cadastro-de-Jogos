@@ -1,13 +1,14 @@
-from .forms import UsuariosForm, PerfilForm, PerfilUpdate, PasswordForm
-from django.views.generic.edit import CreateView
-from django.urls import reverse_lazy
-from django.shortcuts import HttpResponseRedirect
-from django.views.generic import TemplateView
-from django.contrib.messages.views import SuccessMessageMixin
+from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
-from django.contrib import messages
-from django.contrib.auth.views import PasswordChangeView
+from django.contrib.auth.views import PasswordChangeView, PasswordResetView
+from django.contrib.messages.views import SuccessMessageMixin
+from django.shortcuts import HttpResponseRedirect
+from django.urls import reverse_lazy
+from django.views import View
+from django.views.generic import TemplateView
+from django.views.generic.edit import CreateView
+from .forms import PasswordForm, PerfilForm, PerfilUpdate, UsuariosForm, PasswordReset
 
 class UsuariosViews(SuccessMessageMixin, CreateView):
     template_name = 'cadastro/cadastrar.html'
@@ -54,3 +55,7 @@ class ChangePasswordView(LoginRequiredMixin, SuccessMessageMixin, PasswordChange
     success_message = "Senha alterada com sucesso"
     success_url = reverse_lazy('lista_jogos')
     login_url = reverse_lazy('login') # se alguem tentar entrar em alguma pagina sem estar autenticado será redirecionado para o login
+    
+class PasswordReset(PasswordResetView):
+    template_name= "cadastro/senha_reset.html"
+    form_class = PasswordReset

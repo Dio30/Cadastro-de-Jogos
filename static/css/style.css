@@ -30,6 +30,13 @@ body{ /* o corpo do site */
   max-width: 1100px;
 }
 
+.fa-exclamation-circle{
+  color: #e11010;
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+}
+
 .mybtn{ /* botões dinamicos */
   color: #ffffff;
   box-shadow: #03fee17d 4px 3px 5px;
@@ -261,8 +268,8 @@ box-shadow: #094c66 5px 5px 5px;
 }
 
 .mytext{ /* para os erros de formulario */
-    color:#e41010;
-    list-style-type: none; 
+    color:#e11010;
+    list-style-type: none;
 }
 
 .text_muted2{ /* para os textos de ajuda */
@@ -373,7 +380,7 @@ box-shadow: #094c66 5px 5px 5px;
   .form-label-group label { /* suporte para o login dinamico */
     position: absolute;
     top: 0px;
-    left: 0px;
+    left: 1px;
     display: block;
     width: 100%;
     margin-bottom: 0; /* Override default `<label>` margin */

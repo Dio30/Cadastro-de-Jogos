@@ -40,3 +40,5 @@
 ## Esse projeto é mais voltado para pessoas que gostam de jogos e que queiram mantê-los guardados em um site e também serve para simular uma loja de jogos que queira manter seu estoque atualizado.
 
 ## Foi adicionado uma validação para que quando for redefinir a senha usando o email só será aceito o envio do email se o mesmo estiver cadastrado, se não irá aparecer uma mensagem de erro
+
+## Foi adicionado javascript para que o usuário possa visualizar sua senha quando trocar ou redefinir a senha ou quando fizer seu cadastro.

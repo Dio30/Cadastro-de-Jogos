@@ -4,7 +4,7 @@
 
 {% load crispy_forms_tags %}
 
-{% block title %} Alterar Senha{% endblock %}
+{% block title %} Alterar Senha de {{ user.username }} {% endblock %}
 
 {% block main %}
 
@@ -18,7 +18,7 @@
             <div class="col-lg-6">
                 <div class="card shadow-lg border-1 rounded-lg">
                     <div class="card-header justify-content-center mycardheader">
-                        <h3 class="font-weight-dark text-center">Alterar Senha</h3>
+                        <h3 class="font-weight-dark text-center">Alterar Senha de {{ user.username }}</h3>
                     </div>
                     <div class="card-body mybody">
                         <form method="POST" enctype="multipart/form-data">
@@ -29,15 +29,24 @@
                                 {{ form.old_password }}
                                 <label>Senha Atual</label>
                                 <img src="{% static 'imagens/eye.svg' %}" class="icon" onclick="mostrarSenha1()">
-                                <font class='mytext'>{{ form.old_password.errors }}</font>
+
+                                {% if form.old_password.errors %}
+                                    <style>
+                                    .form-label-group .form-control {
+                                        border: 3px solid #e11010;
+                                    }
+                                    </style>
+                                    {% for error in form.old_password.errors %}
+                                      <p class='mytext'>{{ error }}</p>
+                                    {% endfor %}
+                                {% endif %}
                             </div>
                             
-                            <div class='form-label-group'>
+                            <div class='form-label-group1'>
                                 <span class="fa fa-lock"></span>
                                 {{ form.new_password1 }}
                                 <label>Nova Senha</label>
                                 <img src="{% static 'imagens/eye.svg' %}" class="icon" id="icon" onclick="mostrarSenha3()">
-                                <font class='mytext'>{{ form.new_password1.errors }}</font>
                                 <ul class="text_muted2" style="margin-top: 1rem;">
                                     <li>Sua senha não pode ser muito parecida com o nome do usuário.</li>
                                     <li>Sua senha precisa conter pelo menos 8 caracteres.</li>
@@ -47,14 +56,25 @@
                                 </ul>
                             </div>
 
-                            <div class='form-label-group'>
+                            <div class='form-label-group1'>
                                 <span class="fa fa-lock"></span>
                                 {{ form.new_password2 }}
                                 <label>Confirmar Senha</label>
                                 <img src="{% static 'imagens/eye.svg' %}" class="icon" id="icon1" onclick="mostrarSenha4()">
                                 <p class="text_muted2">Informe a mesma senha informada anteriormente, para verificação.</p>
-                                <font class='mytext'>{{ form.new_password2.errors }}</font>
+
+                                {% if form.new_password2.errors %}
+                                    <style>
+                                    .form-label-group1 .form-control {
+                                        border: 3px solid #e11010;
+                                    }
+                                    </style>
+                                    {% for error in form.new_password2.errors %}
+                                        <p class='mytext'>{{ error }}</p>
+                                    {% endfor %}
+                                {% endif %}
                             </div>
+
                             <button type="submit" class="btn btn-success mybtn">Salvar</button>
                             <a href="{% url 'lista_jogos' %}" class="btn btn-primary mybtn mx-3" 
                             style="position:absolute; right:1px;">Voltar</a>

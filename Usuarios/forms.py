@@ -14,6 +14,9 @@ class UsuariosForm(UserCreationForm):
         u = self.cleaned_data['username']
         if User.objects.filter(username=u).exists():
             raise ValidationError(f'O usuário {u} já existe.')
+        
+        if u.isnumeric():
+            raise ValidationError('O usuário não pode ser somente numérico.')
         return u
     
     def clean_email(self):
@@ -40,6 +43,12 @@ class PerfilForm(forms.ModelForm):
             'email': forms.EmailInput(attrs={'spellcheck':'false', 'placeholder':'Email', 
                                      'id':'inputUser', 'class':'form-control', 'autocapitalize': 'off'}) #input
             }
+    
+    def clean_username(self):
+        u = self.cleaned_data['username']
+        if u.isnumeric():
+            raise ValidationError('O usuário não pode ser somente numérico.')
+        return u
 
 class PasswordForm(PasswordChangeForm):
     old_password = forms.CharField(max_length=100, widget=forms.PasswordInput

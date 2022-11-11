@@ -28,7 +28,7 @@ class PerfilUpdateView(LoginRequiredMixin, TemplateView):
         usuario = User.objects.filter(username=username).exclude(id=request.user.id)
         
         if usuario.exists():
-            messages.error(request, f"Já existe um usuario com esse nome: {username}")
+            messages.error(request, f"Já existe um usuário com esse nome: {username}")
             return HttpResponseRedirect(reverse_lazy('perfil_edit'))
         
         meu_email = User.objects.filter(email=email).exclude(id=request.user.id)

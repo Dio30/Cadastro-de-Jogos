@@ -31,12 +31,51 @@
                                 <span class="fa fa-user"></span>
                                 {{ form.username }}
                                 <label for="inputUser">Usuário</label>
+                                {% if form.username.errors %}
+                                    <style>
+                                    .form-label-group .form-control {
+                                        border: 3px solid #e11010;
+                                    }
+                                    .form-label-group label{
+                                        position: absolute;
+                                        left: 3px;
+                                    }
+                                    .fa-user{
+                                        color: #e11010;
+                                        position: absolute;
+                                        top: 15px;
+                                        left: 12px;
+                                    }
+                                    </style>
+                                    <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+                                    {% for error in form.username.errors %}
+                                      <p class='mytext'>{{ error }}</p>
+                                    {% endfor %}
+                                {% endif %}
                             </div>
                             
-                            <div class="form-label-group">
+                            <div class="form-label-group1">
                                 <span class="fa fa-envelope envelope3"></span>
                                 {{ form.email }}
                                 <label for="inputUser">Email</label>
+                                {% if form.email.errors %}
+                                    <style>
+                                    .form-label-group1 .form-control {
+                                        border: 3px solid #e11010;
+                                    }
+                                    .form-label-group1 label{
+                                        position: absolute;
+                                        left: 3px;
+                                    }
+                                    .envelope3{
+                                        color: #e11010;
+                                    }
+                                    </style>
+                                    <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+                                    {% for error in form.email.errors %}
+                                      <p class='mytext'>{{ error }}</p>
+                                    {% endfor %}
+                                {% endif %}
                             </div>
                             
                             {{ perfil|crispy }}

@@ -35,6 +35,10 @@
                                     .form-label-group .form-control {
                                         border: 3px solid #e11010;
                                     }
+                                    .form-label-group label{
+                                        position: absolute;
+                                        left: 3px;
+                                    }
                                     </style>
                                     {% for error in form.old_password.errors %}
                                       <p class='mytext'>{{ error }}</p>
@@ -67,6 +71,10 @@
                                     <style>
                                     .form-label-group1 .form-control {
                                         border: 3px solid #e11010;
+                                    }
+                                    .form-label-group1 label{
+                                        position: absolute;
+                                        left: 3px;
                                     }
                                     </style>
                                     {% for error in form.new_password2.errors %}

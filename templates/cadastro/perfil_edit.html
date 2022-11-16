@@ -8,8 +8,6 @@
 
 {% block main %}
 
-{% include 'mensagens.html' %}
-
 {% include 'nav-bar.html' %}
 
 <div class="form-content">
@@ -27,6 +25,9 @@
                             <center><img src="{{ request.user.perfil.image_url|default_if_none:'/static/imagens/74472.png' }}"
                             class="myimg" height="120px" width="120px"></center>
                             <br>
+
+                            {% include 'mensagens.html' %}
+
                             <div class="form-label-group">
                                 <span class="fa fa-user"></span>
                                 {{ form.username }}

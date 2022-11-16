@@ -31,7 +31,7 @@ class PerfilUpdate(forms.ModelForm):
         fields = '__all__'
         exclude = ['usuario',]
         
-class PerfilForm(forms.ModelForm):                         
+class PerfilForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ['username', 'email']

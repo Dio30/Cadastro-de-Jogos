@@ -37,7 +37,7 @@ class PerfilForm(forms.ModelForm):
         fields = ['username', 'email']
         widgets = {
             'username': forms.TextInput
-            (attrs={'spellcheck':'false', 'autofocus':'on', 'id':'inputUser', 'class':'form-control', 
+            (attrs={'spellcheck':'false', 'id':'inputUser', 'class':'form-control', 
                     'placeholder':'Usuário', 'autocapitalize': 'off'}), #input
             
             'email': forms.EmailInput(attrs={'spellcheck':'false', 'placeholder':'Email', 

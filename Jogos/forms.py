@@ -6,7 +6,7 @@ class JogosForm(forms.ModelForm):
         model = Jogos
         fields = ('nome_do_jogo', 'estilo_do_jogo', 'imagem')
         widgets = {
-            'nome_do_jogo': forms.TextInput(attrs={'spellcheck':'false', 'autofocus':'on', 'placeholder':'Nome do jogo', 
+            'nome_do_jogo': forms.TextInput(attrs={'spellcheck':'false', 'placeholder':'Nome do jogo', 
                     'id':'inputUser', 'class':'form-control', 'autocapitalize': 'off'}), #input
             
             'estilo_do_jogo': forms.RadioSelect,

@@ -46,7 +46,12 @@
                                 {% endif %}
                             </div>
 
-                            <button type='submit' class="btn btn-primary mybtn">Enviar</button>
+                            <button type='submit' class="btn btn-primary btn-sm mybtn btn_submit">Enviar
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </button>
                             <a href="{% url 'login' %}" class="btn btn-dark mx-3 mybtn" style="position:absolute; right: 4px;">Voltar</a>
                             </form>
                             <br>
@@ -64,7 +69,7 @@
 {% endblock %}
 
 {% block footer %}
-    <footer class="footer">
+<br><br><br><br><footer class="footer">
         Desenvolvido por Dione Rafael Padilha
     </footer>
 {% endblock %}

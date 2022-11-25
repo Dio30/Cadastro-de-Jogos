@@ -29,7 +29,7 @@
                             {% include 'mensagens.html' %}
 
                             <div class="form-label-group">
-                                <span class="fa fa-user"></span>
+                                <span class="fa fa-user user1"></span>
                                 {{ form.username }}
                                 <label for="inputUser">Usuário</label>
                                 {% if form.username.errors %}
@@ -41,7 +41,7 @@
                                         position: absolute;
                                         left: 3px;
                                     }
-                                    .fa-user{
+                                    .user1{
                                         color: #e11010;
                                         position: absolute;
                                         top: 15px;
@@ -62,8 +62,13 @@
                             </div>
                             
                             {{ perfil|crispy }}
-                            <button type="submit" class="btn btn-success mybtn">Salvar</button>
-                            <a href="{% url 'lista_jogos' %}" class="btn btn-primary mybtn mx-3"
+                            <button type="submit" class="btn btn-primary btn-sm mybtn btn_submit">Salvar
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </button>
+                            <a href="{% url 'lista_jogos' %}" class="btn btn-secondary mybtn mx-3"
                             style="position:absolute; right:1px;">Voltar</a>
                         </form>
                     </div>

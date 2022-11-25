@@ -28,7 +28,11 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <div class="card text-center" style="max-width: 25rem; border: 0.3rem ridge #1078ef;">
+            <div class="card text-center btn_submit1" style="max-width: 25rem;">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
                 <div class="card-header mycardheader">
                     {% if user.is_superuser %}
                         <h5 class="card-title">Jogo: {{ jogo.nome_do_jogo }} / Criado por: {{ jogo.usuario }}</h5>
@@ -37,7 +41,7 @@
                     {% endif %}
                 </div>
 
-                <div class="card-body mybody" style="max-width: 25rem; border-top: 0.3rem ridge #1078ef;">
+                <div class="card-body mybody" style="max-width: 25rem; border-top: 0.1rem ridge #000000;">
                     <a href="{% url 'imagem' jogo.pk %}" data-toggle="modal" data-target="#exampleModal{{ jogo.pk }}">
 
                     <img src="{{ jogo.image_url|default_if_none:'/static/imagens/console-com-letras-de-jogos-sinal-de-neon-no-fundo-do-tijolo_1262-11854.webp' }}"
@@ -51,7 +55,7 @@
                                     <div class="modal-header mydiv">
                                         <h5 class="modal-title" id="exampleModalLabel">{{ jogo.nome_do_jogo }}</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span title="Fechar" aria-hidden="true">&times;</span></button>
+                                        <b title="Fechar" aria-hidden="true">&times;</b></button>
                                     </div>
                                     <div class="modal-body mydiv">
                                         <img src="{{ jogo.image_url|default_if_none:'/static/imagens/console-com-letras-de-jogos-sinal-de-neon-no-fundo-do-tijolo_1262-11854.webp' }}" 
@@ -76,7 +80,7 @@
                                 <div class="modal-header mydiv">
                                     <h5 class="modal-title" id="exampleModalLabel">Deletar {{ jogo.nome_do_jogo }}?</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span title="Fechar" aria-hidden="true">&times;</span></button>
+                                    <b title="Fechar" aria-hidden="true">&times;</b></button>
                                 </div>
                                 <div class="modal-body mydiv">
                                     <form action="{% url 'deletar' jogo.pk %}" method="POST" enctype="multipart/form-data">
@@ -101,7 +105,12 @@
 </center>
 {% endfor %}        
 <br>          
-<center><a href="{% url 'novo' %}" class="btn btn-primary mybtn">Novo Jogo</a></center>
+<center><a href="{% url 'novo' %}" class="btn btn-primary btn-sm mybtn btn_submit">Novo Jogo
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+</a></center>
 
 <br>
 <ul class="pagination justify-content-center">

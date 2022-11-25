@@ -16,7 +16,7 @@ class JogosList(LoginRequiredMixin, ListView):
     queryset = Jogos.objects.order_by('nome_do_jogo')
     login_url = reverse_lazy('login')
     paginator_class = MyPaginator
-    paginate_by = 1
+    paginate_by = 3
     
     def get_queryset(self): # para cada usuario ser unico e não ter acesso a qualquer coisa de outros usuarios cadastrados
         user = self.request.user

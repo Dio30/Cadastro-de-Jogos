@@ -37,6 +37,19 @@ body{ /* o corpo do site */
   top: 1rem;
 }
 
+.mythead{
+  text-align: center;
+  background-color: #0dc4ce;
+}
+
+.mytbody{
+  text-align: center;
+  align-items: center;
+  background-color: #828282;
+  font-weight: bold;
+  font-size: 90%;
+}
+
 .mybtn{ /* botões dinamicos */
   color: #ffffff;
   box-shadow: #03fee17d 4px 3px 5px;

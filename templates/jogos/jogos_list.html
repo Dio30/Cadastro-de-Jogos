@@ -36,7 +36,11 @@
     <tbody class="mytbody">
         <tr>
             {% for jogo in object_list %}
-                <td>{{ jogo.nome_do_jogo }}</td>
+                {% if user.is_superuser %}
+                    <td>{{ jogo.nome_do_jogo }} ({{ jogo.usuario }})</td>
+                {% else %}
+                    <td>{{ jogo.nome_do_jogo }}</td>
+                {% endif %}
                 <td><a href="{% url 'imagem' jogo.pk %}" data-toggle="modal" data-target="#exampleModal{{ jogo.pk }}">
 
                 <img src="{{ jogo.image_url|default_if_none:'/static/imagens/console-com-letras-de-jogos-sinal-de-neon-no-fundo-do-tijolo_1262-11854.webp' }}" 

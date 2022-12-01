@@ -150,7 +150,7 @@ LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'lista_jogos'
 LOGOUT_REDIRECT_URL = 'login'
 
-SESSION_COOKIE_AGE = 3600
+SESSION_COOKIE_AGE = 3600 # tempo que o usuário fica autenticado, depois disso volta para pagina de login (1 hora)
 CSRF_COOKIE_SECURE = True
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 SESSION_COOKIE_SECURE = True

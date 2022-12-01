@@ -37,6 +37,19 @@ body{ /* o corpo do site */
   top: 1rem;
 }
 
+.mythead{
+  text-align: center;
+  background-color: #0dc4ce;
+}
+
+.mytbody{
+  text-align: center;
+  align-items: center;
+  background-color: #828282;
+  font-weight: bold;
+  font-size: 90%;
+}
+
 .mybtn{ /* botões dinamicos */
   color: #ffffff;
   box-shadow: #03fee17d 4px 3px 5px;
@@ -261,6 +274,101 @@ box-shadow: #094c66 5px 5px 5px;
   }
 }
 
+/*botão submit1*/
+
+.btn_submit1{ /* para o botao1 que fica girando */
+  position: relative;
+  display:inline-block;
+  text-decoration:none;
+  overflow: hidden;
+  font-weight: bold;
+  font-size: 110%;
+  font-family:Arial, Helvetica, sans-serif;
+  color: #000000;
+  transition: .5s;
+  letter-spacing: 0.5px;
+}
+
+.btn_submit1 span{ /* para o botao que fica girando */
+  position: absolute;
+  display: block;
+}
+
+.btn_submit1 span:nth-child(1){ /* para o botao que fica girando */
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #0062ff);
+  animation: btn-anim1 1.3s linear infinite;
+}
+
+@keyframes btn-anim1 { /* para o botao que fica girando */
+  0% {
+    left: -100%;
+  }
+  50%, 100%{
+    left: 100%;
+  }
+}
+
+.btn_submit1 span:nth-child(2){ /* para o botao que fica girando */
+  top: -100%;
+  right: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(10deg, transparent, #0062ff);
+  animation: btn-anim2 1.3s linear infinite;
+  animation-delay: .25s;
+}
+
+@keyframes btn-anim2 { /* para o botao que fica girando */
+  0% {
+    top: -100%;
+  }
+  50%, 100%{
+    top: 100%;
+  }
+}
+
+.btn_submit1 span:nth-child(3){ /* para o botao que fica girando */
+  bottom: 0;
+  right: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(270deg, transparent, #0062ff);
+  animation: btn-anim3 1.3s linear infinite;
+  animation-delay: .50s;
+}
+
+@keyframes btn-anim3 { /* para o botao que fica girando */
+  0% {
+    right: -100%;
+  }
+  50%, 100%{
+    right: 100%;
+  }
+}
+
+.btn_submit1 span:nth-child(4){ /* para o botao que fica girando */
+  bottom: -100%;
+  left: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(360deg, transparent, #0062ff);
+  animation: btn-anim4 1.3s linear infinite;
+  animation-delay: .75s;
+}
+
+@keyframes btn-anim4 { /* para o botao que fica girando */
+  0% {
+    bottom: -100%;
+  }
+  50%, 100%{
+    bottom: 100%;
+  }
+}
+
 .myimg{ /* para a imagem de perfil */
     border-radius: 5rem;
     border: #000000 2px solid;
@@ -288,6 +396,12 @@ box-shadow: #094c66 5px 5px 5px;
     left: 10px;
   }
 
+.fa-book{
+  position: absolute;
+    top: 15px;
+    left: 10px;
+}
+
 .fa-lock{ /* icon senha */
   position: absolute;
   top: .99rem;
@@ -299,6 +413,12 @@ box-shadow: #094c66 5px 5px 5px;
     top: .90rem;
     left: 10px;
   }
+
+.user1{
+  position: absolute;
+  top: 30%;
+  left: 10px;
+}
 
 .home{ /* icon casa no dropdown*/
   position: absolute;

@@ -28,7 +28,7 @@
     <thead class="mythead">
         <tr>
             <th>Jogo</th>
-            <th>Imagem</th>
+            <th>Em estoque</th>
             <th>Editar</th>
             <th>Deletar</th>
         </tr>
@@ -41,10 +41,9 @@
                 {% else %}
                     <td>{{ jogo.nome_do_jogo }}</td>
                 {% endif %}
-                <td><a href="{% url 'imagem' jogo.pk %}" data-toggle="modal" data-target="#exampleModal{{ jogo.pk }}">
-
-                <img src="{{ jogo.image_url|default_if_none:'/static/imagens/console-com-letras-de-jogos-sinal-de-neon-no-fundo-do-tijolo_1262-11854.webp' }}" 
-                    width="40px" height="35px" title="Clique aqui para visualizar {{ jogo.nome_do_jogo }}" class="mybtn"></a>
+                <td><a href="{% url 'imagem' jogo.pk %}" data-toggle="modal" data-target="#exampleModal{{ jogo.pk }}" 
+                    class="btn btn-sm btn-success mybtn" title="Clique aqui para ver {{ jogo.nome_do_jogo }}"
+                    style="color: #000; font-weight: bold">{{ jogo.estoque }}</a>
                     
                     <!-- Modal -->
                     <div class="modal fade" id="exampleModal{{ jogo.pk }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

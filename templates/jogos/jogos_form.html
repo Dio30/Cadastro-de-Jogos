@@ -28,7 +28,18 @@
                                 <span class="fa fa-gamepad"></span>
                                 {{ form.nome_do_jogo }}
                                 <label for="inputUser">Nome do Jogo</label>
-                                <font class='mytext'>{{ form.nome_do_jogo.errors }}</font>
+                                    {% for error in form.nome_do_jogo.errors %}
+                                        <p class='mytext'>{{ error }}</p>
+                                    {% endfor %}
+                            </div>
+
+                            <div class='form-label-group'>
+                                <span class="fa fa-book"></span>
+                                {{ form.estoque }}
+                                <label for="inputUser">Quant. em Estoque</label>
+                                    {% for error in form.estoque.errors %}
+                                        <p class='mytext'>{{ error }}</p>
+                                    {% endfor %}
                             </div>
 
                             {{ form.estilo_do_jogo|as_crispy_field }}

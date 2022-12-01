@@ -396,6 +396,12 @@ box-shadow: #094c66 5px 5px 5px;
     left: 10px;
   }
 
+.fa-book{
+  position: absolute;
+    top: 15px;
+    left: 10px;
+}
+
 .fa-lock{ /* icon senha */
   position: absolute;
   top: .99rem;

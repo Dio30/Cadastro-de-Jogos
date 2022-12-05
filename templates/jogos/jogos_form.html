@@ -28,18 +28,46 @@
                                 <span class="fa fa-gamepad"></span>
                                 {{ form.nome_do_jogo }}
                                 <label for="inputUser">Nome do Jogo</label>
-                                    {% for error in form.nome_do_jogo.errors %}
-                                        <p class='mytext'>{{ error }}</p>
-                                    {% endfor %}
+                                {% if form.nome_do_jogo.errors %}
+                                    <style>
+                                        .form-label-group .form-control {
+                                            border: 3px solid #e11010;
+                                        }
+                                        .form-label-group label{
+                                            position: absolute;
+                                            left: 3px;
+                                        }
+                                        .fa-gamepad{
+                                            color: #e11010;
+                                        }
+                                    </style>
+                                        {% for error in form.nome_do_jogo.errors %}
+                                            <p class='mytext'>{{ error }}</p>
+                                        {% endfor %}
+                                {% endif %}
                             </div>
 
-                            <div class='form-label-group'>
+                            <div class='form-label-group1'>
                                 <span class="fa fa-book"></span>
                                 {{ form.estoque }}
                                 <label for="inputUser">Quant. em Estoque</label>
+                                {% if form.estoque.errors %}
+                                    <style>
+                                        .form-label-group1 .form-control {
+                                            border: 3px solid #e11010;
+                                        }
+                                        .form-label-group1 label{
+                                            position: absolute;
+                                            left: 3px;
+                                        }
+                                        .fa-book{
+                                            color: #e11010;
+                                        }
+                                    </style>
                                     {% for error in form.estoque.errors %}
                                         <p class='mytext'>{{ error }}</p>
                                     {% endfor %}
+                                {% endif %}
                             </div>
 
                             {{ form.estilo_do_jogo|as_crispy_field }}

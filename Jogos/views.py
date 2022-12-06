@@ -13,7 +13,6 @@ from django.contrib import messages
 class JogosList(LoginRequiredMixin, ListView):
     model = Jogos
     template_name = 'jogos/jogos_list.html'
-    queryset = Jogos.objects.order_by('nome_do_jogo')
     login_url = reverse_lazy('login')
     paginator_class = MyPaginator
     paginate_by = 3

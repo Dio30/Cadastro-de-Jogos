@@ -22,7 +22,7 @@ class Jogos(models.Model):
     class Meta:
         verbose_name = 'Jogo'
         verbose_name_plural = 'Jogos'
-        ordering = ['nome_do_jogo',]
+        ordering = ['nome_do_jogo']
     
     def __str__(self):
         return self.nome_do_jogo

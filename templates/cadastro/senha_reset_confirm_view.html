@@ -35,7 +35,7 @@
                                 <img src="/static/imagens/eye.svg" class="icon" onclick="mostrarSenha1()">
                                 <ul class="text-muted">
                                     <li>Sua senha não pode ser muito parecida com o resto das suas informações pessoais.</li>
-                                    <li>Sua senha precisa conter pelo menos 8 caracteres.</li>
+                                    <li>Sua senha precisa conter pelo menos 9 caracteres.</li>
                                     <li>Sua senha não pode ser uma senha comumente utilizada.</li>
                                     <li>Sua senha não pode ser inteiramente numérica.</li>
                                 </ul>
@@ -66,8 +66,13 @@
                                     {% endfor %}
                                 {% endif %}
                             </div>
-                            <button type='submit' class="btn btn-success mybtn">Salvar</button>
-                            <a href="{% url 'login' %}" class="btn btn-dark mx-3 mybtn" style="position:absolute; right: 0;">Voltar</a>
+                            <button type='submit' class="btn btn-primary btn-sm mybtn btn_submit">Salvar
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </button>
+                            <a href="{% url 'login' %}" class="btn btn-secondary mx-3 mybtn" style="position:absolute; right: 0;">Voltar</a>
                         </form>
                     </div>
                 </div>

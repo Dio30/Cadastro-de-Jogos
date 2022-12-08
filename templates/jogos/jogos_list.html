@@ -46,7 +46,7 @@
                     style="color: #000; font-weight: bold">{{ jogo.estoque }}</a>
                     
                     <!-- Modal -->
-                    <div class="modal fade" id="exampleModal{{ jogo.pk }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="exampleModal{{ jogo.pk }}" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header mydiv">
@@ -70,14 +70,14 @@
                     </div>
                 </td>
                 <td><a href="{% url 'editar' jogo.pk %}" class="btn btn-warning btn-sm mybtn" title="Editar">
-                    <i class="fa fa-pencil" aria-hidden="true"></i>
-                </a></td>
+                    <i class="fa fa-pencil" aria-hidden="true"></i></a></td>
+
                 <td><a href="{% url 'deletar' jogo.pk %}" class="btn btn-danger btn-sm mybtn"
                     data-toggle="modal" data-target="#exampleModal1{{ jogo.pk }}" title="Deletar">
                     <i class="fa fa-trash-o" aria-hidden="true"></i></a>
 
                     <!-- Modal -->
-                    <div class="modal fade" id="exampleModal1{{ jogo.pk }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="exampleModal1{{ jogo.pk }}" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header mydiv">

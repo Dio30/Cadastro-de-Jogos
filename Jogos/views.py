@@ -67,6 +67,7 @@ class JogosNew(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     
 class JogosEdit(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     form_class = JogosForm
+    template_name = 'jogos/jogos_form.html'
     success_message = 'Jogo editado com sucesso!'
     success_url = reverse_lazy('lista_jogos')
     login_url = reverse_lazy('login')

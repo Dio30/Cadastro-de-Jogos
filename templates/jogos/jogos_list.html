@@ -41,10 +41,15 @@
                 {% else %}
                     <td>{{ jogo.nome_do_jogo }}</td>
                 {% endif %}
+                {% if jogo.estoque < 4 %}
+                <td><a href="{% url 'imagem' jogo.pk %}" data-toggle="modal" data-target="#exampleModal{{ jogo.pk }}" 
+                    class="btn btn-sm btn-danger mybtn" title="Clique aqui para ver {{ jogo.nome_do_jogo }}"
+                    style="color: #000; font-weight: bold;">{{ jogo.estoque }}</a>
+                {% else %}
                 <td><a href="{% url 'imagem' jogo.pk %}" data-toggle="modal" data-target="#exampleModal{{ jogo.pk }}" 
                     class="btn btn-sm btn-success mybtn" title="Clique aqui para ver {{ jogo.nome_do_jogo }}"
                     style="color: #000; font-weight: bold">{{ jogo.estoque }}</a>
-                    
+                {% endif %}
                     <!-- Modal -->
                     <div class="modal fade" id="exampleModal{{ jogo.pk }}" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">

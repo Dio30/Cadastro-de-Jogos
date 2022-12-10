@@ -12,7 +12,8 @@ class UsuariosForm(UserCreationForm):
         
     def clean_username(self):
         u = self.cleaned_data['username']
-        if User.objects.filter(username=u).exists():
+        user = User.objects.filter(username=u)
+        if user.exists():
             raise ValidationError(f'O usuário {u} já existe.')
         
         if u.isnumeric():
@@ -21,7 +22,8 @@ class UsuariosForm(UserCreationForm):
     
     def clean_email(self):
         e = self.cleaned_data['email']
-        if User.objects.filter(email=e).exclude(email='').exists():
+        email = User.objects.filter(email=e).exclude(email='')
+        if email.exists():
             raise ValidationError(f'O email {e} já existe.')
         return e
     
@@ -43,12 +45,23 @@ class PerfilForm(forms.ModelForm):
             'email': forms.EmailInput(attrs={'spellcheck':'false', 'placeholder':'Email', 
                                      'id':'inputUser', 'class':'form-control', 'autocapitalize': 'off'}) #input
             }
-    
+        
+    # para poder trocar o nome do usuário excluindo ele mesmo, se não aparecerá um erro
     def clean_username(self):
         u = self.cleaned_data['username']
+        user = User.objects.filter(username=u).exclude(id=self.instance.id) 
         if u.isnumeric():
             raise ValidationError('O usuário não pode ser somente numérico.')
+        if user.exists():
+            raise ValidationError(f'O usuário {u} já existe!')
         return u
+    
+    def clean_email(self):
+        e = self.cleaned_data['email']
+        email = User.objects.filter(email=e).exclude(id=self.instance.id).exclude(email='')
+        if email.exists():
+            raise ValidationError(f'O email {e} já existe!')
+        return e
 
 class PasswordForm(PasswordChangeForm):
     old_password = forms.CharField(max_length=100, widget=forms.PasswordInput

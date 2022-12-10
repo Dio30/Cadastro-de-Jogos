@@ -31,11 +31,11 @@
 
 ## Também é possivel adicionar/editar sua foto de perfil separadamente das fotos dos jogos adicionados, no perfil pode trocar o nome do usuario e o seu email tambem.
 
-## É possivel tambem fazer paginação entre os jogos adicionados já que só é possivel visualizar um jogo por pagina por questão de responsividade.
+## É possivel tambem fazer paginação entre os jogos adicionados e quando fizer pesquisa por nome do jogo também é possivel fazer a paginação se tiver mais de um jogo na pesquisa.
 
 ## Caso queira pode trocar a senha sabendo a senha antiga e obedecendo os critérios solicitados
 
-## Quando é cadastrado um usuario e um email se quiser esse usuario se torna unico e o email quando inserido também, acredito que em questão de segurança e privacidade são questões muito importantes.
+## Quando é cadastrado um usuario e um email se quiser, esse usuario se torna unico e o email quando inserido também, acredito que em questão de segurança e privacidade são opções muito importantes.
 
 ## Esse projeto é mais voltado para pessoas que gostam de jogos e que queiram mantê-los guardados em um site e também serve para simular uma loja de jogos que queira manter seu estoque atualizado.
 

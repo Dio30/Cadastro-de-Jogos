@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 
 class Perfil(models.Model):
-    usuario = models.OneToOneField(User, on_delete=models.CASCADE)
+    usuario = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
     imagem_perfil = models.ImageField(upload_to='perfil', null=True, blank=True, verbose_name='Imagem:')
     
     def __str__(self):

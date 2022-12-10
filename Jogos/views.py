@@ -9,6 +9,7 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.mail import EmailMessage
 from django.contrib import messages
+from django.contrib.auth.models import User
 
 class JogosList(LoginRequiredMixin, ListView):
     model = Jogos
@@ -34,6 +35,12 @@ class JogosList(LoginRequiredMixin, ListView):
             
         context = self.get_context_data(object_list=self.object_list)
         return self.render_to_response(context)
+    
+    def get_context_data(self, *args ,**kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        context['usuario'] = User.objects.all()
+        context['quantidade'] = User.objects.count()
+        return context
     
 class JogosDetail(LoginRequiredMixin, DetailView):
     queryset = Jogos.objects.all()

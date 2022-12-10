@@ -1,6 +1,5 @@
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.models import User
 from django.contrib.auth.views import PasswordChangeView, PasswordResetView
 from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import HttpResponseRedirect
@@ -8,7 +7,7 @@ from django.urls import reverse_lazy
 from django.views.generic import TemplateView
 from django.views.generic.edit import CreateView
 from .forms import PasswordForm, PerfilForm, PerfilUpdate, UsuariosForm, PasswordReset
-
+    
 class UsuariosViews(SuccessMessageMixin, CreateView):
     template_name = 'cadastro/cadastrar.html'
     form_class = UsuariosForm

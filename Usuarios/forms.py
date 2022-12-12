@@ -27,13 +27,13 @@ class UsuariosForm(UserCreationForm):
             raise ValidationError(f'O email {e} já existe.')
         return e
     
-class PerfilUpdate(forms.ModelForm):
+class PerfilUpdate(forms.ModelForm): # para imagem de perfil
     class Meta:
         model = Perfil
         fields = '__all__'
         exclude = ['usuario',]
         
-class PerfilForm(forms.ModelForm):
+class PerfilForm(forms.ModelForm): # para editar usuario e email do usuário
     class Meta:
         model = User
         fields = ['username', 'email']
@@ -49,7 +49,7 @@ class PerfilForm(forms.ModelForm):
     # para poder trocar o nome do usuário excluindo ele mesmo, se não aparecerá um erro
     def clean_username(self):
         u = self.cleaned_data['username']
-        user = User.objects.filter(username=u).exclude(id=self.instance.id) 
+        user = User.objects.filter(username=u).exclude(id=self.instance.id)
         if u.isnumeric():
             raise ValidationError('O usuário não pode ser somente numérico.')
         if user.exists():

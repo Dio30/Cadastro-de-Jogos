@@ -110,36 +110,7 @@
     </tbody>
 </table></center>
 <br>
-{% if user.is_superuser %}
-<center><table class="table-bordered table">
-    <thead class="mythead">
-        <tr>
-            <th>Nome</th>
-        </tr>
-    </thead>
-    <tbody class="mytbody">
-        <tr>
-            <td>{{ usuario }}</td>
-        </tr>
-    </tbody>
-</table></center>
-<br>
 
-<center><table class="table-bordered table">
-    <thead class="mythead">
-        <tr>
-            <th>Quantidade de usuarios</th>
-        </tr>
-    </thead>
-    <tbody class="mytbody">
-        <tr>
-            <td>{{quantidade}}</td>
-        </tr>
-    </tbody>
-</table></center>
-{% endif %}
-
-<br>
 <center><a href="{% url 'novo' %}" class="btn btn-primary btn-sm mybtn btn_submit">Novo Jogo
     <span></span>
     <span></span>

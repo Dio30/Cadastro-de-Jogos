@@ -10,8 +10,8 @@
 
 <br><nav class="navbar navbar-dark mynav">
     <ul class="nav justify-content-start">
-        <img src="{{ request.user.perfil.image_url|default_if_none:'/static/imagens/74472.png' }}" 
-        class="myimg" height="50px" width="50px">
+        <a href="{% url 'perfil_edit' %}" title="Clique aqui para editar {{ user.username }}"><img src="{{ request.user.perfil.image_url|default_if_none:'/static/imagens/74472.png' }}" 
+        class="myimg" height="50px" width="50px"></a>
     </ul>
 
     <ul class="nav justify-content-center">
@@ -20,7 +20,7 @@
 
     <ul class="nav justify-content-end">
         <div class="dropdown">
-            <button class="btn btn-secondary" type="button" data-toggle="dropdown" aria-expanded="false">
+            <button class="btn btn-secondary" type="button" data-toggle="dropdown" aria-expanded="false" title="Menu">
                 <i class="fa fa-bars" aria-hidden="true"></i>
             </button>
             <div class="dropdown-menu dropdown-menu-right mydrop">
@@ -30,7 +30,11 @@
                 <span class="fa fa-envelope envelope2"></span><a class="dropdown-item" href="{% url 'enviar_email' %}">Sugestões</a>
                 <div class="dropdown-divider"></div>
                 {% if user.is_superuser %}
+                    {% if settings.DEBUG == False %}
                     <span class="fa fa-home home2"></span><a class="dropdown-item" href="https://cadastro-de-jogos.up.railway.app/admin">Config Admin</a>
+                    {% else %}
+                    <span class="fa fa-home home2"></span><a class="dropdown-item" href="http://127.0.0.1:8000/admin">Config Admin</a>
+                    {% endif %}
                 {% endif %}
                 <span class="fa fa-sign-out sign-out"></span><a class="dropdown-item" href="{% url 'logout' %}" 
                 onclick="return confirm('Tem certeza que deseja sair?')">Sair</a>
@@ -53,7 +57,7 @@
 
     <ul class="nav justify-content-end">
         <div class="dropdown">
-            <button class="btn btn-secondary" type="button" data-toggle="dropdown" aria-expanded="false">
+            <button class="btn btn-secondary" type="button" data-toggle="dropdown" aria-expanded="false" title="Menu">
                 <i class="fa fa-bars" aria-hidden="true"></i>
             </button>
             <div class="dropdown-menu dropdown-menu-right mydrop">

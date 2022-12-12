@@ -30,11 +30,7 @@
                 <span class="fa fa-envelope envelope2"></span><a class="dropdown-item" href="{% url 'enviar_email' %}">Sugestões</a>
                 <div class="dropdown-divider"></div>
                 {% if user.is_superuser %}
-                    {% if settings.DEBUG == False %}
                     <span class="fa fa-home home2"></span><a class="dropdown-item" href="https://cadastro-de-jogos.up.railway.app/admin">Config Admin</a>
-                    {% else %}
-                    <span class="fa fa-home home2"></span><a class="dropdown-item" href="http://127.0.0.1:8000/admin">Config Admin</a>
-                    {% endif %}
                 {% endif %}
                 <span class="fa fa-sign-out sign-out"></span><a class="dropdown-item" href="{% url 'logout' %}" 
                 onclick="return confirm('Tem certeza que deseja sair?')">Sair</a>

@@ -19,7 +19,7 @@ class Jogos(models.Model):
                                        MaxValueValidator(30, message='O valor maximo é de 30 em estoque!')])
     estilo_do_jogo = models.CharField(max_length=50, default='Outros', choices=escolhas, verbose_name='Estilo:')
     imagem = models.ImageField(upload_to='jogos', null=True, blank=True, verbose_name='Imagem:')
-    slug = models.SlugField(unique=True, blank=True, null=False)
+    slug = models.SlugField(unique=True, blank=True, null=True)
     usuario = models.ForeignKey(User, on_delete=models.CASCADE)
     
     class Meta:

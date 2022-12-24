@@ -42,16 +42,16 @@
                     <td>{{ jogo.nome_do_jogo }}</td>
                 {% endif %}
                 {% if jogo.estoque < 4 %}
-                <td><a href="{% url 'imagem' jogo.pk %}" data-toggle="modal" data-target="#exampleModal{{ jogo.pk }}" 
+                <td><a href="{% url 'imagem' jogo.slug %}" data-toggle="modal" data-target="#exampleModal{{ jogo.slug }}" 
                     class="btn btn-sm btn-danger mybtn" title="Clique aqui para ver {{ jogo.nome_do_jogo }}"
                     style="color: #000; font-weight: bold;">{{ jogo.estoque }}</a>
                 {% else %}
-                <td><a href="{% url 'imagem' jogo.pk %}" data-toggle="modal" data-target="#exampleModal{{ jogo.pk }}" 
+                <td><a href="{% url 'imagem' jogo.slug %}" data-toggle="modal" data-target="#exampleModal{{ jogo.slug }}" 
                     class="btn btn-sm btn-success mybtn" title="Clique aqui para ver {{ jogo.nome_do_jogo }}"
                     style="color: #000; font-weight: bold">{{ jogo.estoque }}</a>
                 {% endif %}
                     <!-- Modal -->
-                    <div class="modal fade" id="exampleModal{{ jogo.pk }}" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="exampleModal{{ jogo.slug }}" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header mydiv">
@@ -74,15 +74,15 @@
                         </div>
                     </div>
                 </td>
-                <td><a href="{% url 'editar' jogo.pk %}" class="btn btn-warning btn-sm mybtn" title="Editar">
+                <td><a href="{% url 'editar' jogo.slug %}" class="btn btn-warning btn-sm mybtn" title="Editar">
                     <i class="fa fa-pencil" aria-hidden="true"></i></a></td>
 
-                <td><a href="{% url 'deletar' jogo.pk %}" class="btn btn-danger btn-sm mybtn"
-                    data-toggle="modal" data-target="#exampleModal1{{ jogo.pk }}" title="Deletar">
+                <td><a href="{% url 'deletar' jogo.slug %}" class="btn btn-danger btn-sm mybtn"
+                    data-toggle="modal" data-target="#exampleModal1{{ jogo.slug }}" title="Deletar">
                     <i class="fa fa-trash-o" aria-hidden="true"></i></a>
 
                     <!-- Modal -->
-                    <div class="modal fade" id="exampleModal1{{ jogo.pk }}" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="exampleModal1{{ jogo.slug }}" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header mydiv">
@@ -91,7 +91,7 @@
                                     <b title="Fechar" aria-hidden="true">&times;</b></button>
                                 </div>
                                 <div class="modal-body mydiv">
-                                    <form action="{% url 'deletar' jogo.pk %}" method="POST" enctype="multipart/form-data">
+                                    <form action="{% url 'deletar' jogo.slug %}" method="POST" enctype="multipart/form-data">
                                         {% csrf_token %}
 
                                         <img src="{{ jogo.image_url|default_if_none:'/static/imagens/console-com-letras-de-jogos-sinal-de-neon-no-fundo-do-tijolo_1262-11854.webp' }}"

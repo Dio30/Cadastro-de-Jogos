@@ -9,7 +9,6 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.mail import EmailMessage
 from django.contrib import messages
-from django.contrib.auth.models import User
 
 class JogosList(LoginRequiredMixin, ListView):
     model = Jogos
@@ -43,9 +42,9 @@ class JogosDetail(LoginRequiredMixin, DetailView):
     def get_object(self, queryset=None):
         user = self.request.user
         if user.is_superuser:
-            self.object = get_object_or_404(Jogos, pk=self.kwargs['pk'])
+            self.object = get_object_or_404(Jogos, slug=self.kwargs['slug'])
         else:
-            self.object = get_object_or_404(Jogos, pk=self.kwargs['pk'], usuario=self.request.user)
+            self.object = get_object_or_404(Jogos, slug=self.kwargs['slug'], usuario=self.request.user)
         return self.object
     
 class JogosNew(LoginRequiredMixin, SuccessMessageMixin, CreateView):
@@ -76,9 +75,9 @@ class JogosEdit(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     def get_object(self, queryset=None):
         user = self.request.user
         if user.is_superuser:
-            self.object = get_object_or_404(Jogos, pk=self.kwargs['pk'])
+            self.object = get_object_or_404(Jogos, slug=self.kwargs['slug'])
         else:
-            self.object = get_object_or_404(Jogos, pk=self.kwargs['pk'], usuario=self.request.user)
+            self.object = get_object_or_404(Jogos, slug=self.kwargs['slug'], usuario=self.request.user)
         return self.object
     
     def get_context_data(self, *args ,**kwargs):
@@ -96,9 +95,9 @@ class JogosDelete(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
     def get_object(self, queryset=None):
         user = self.request.user
         if user.is_superuser:
-            self.object = get_object_or_404(Jogos, pk=self.kwargs['pk'])
+            self.object = get_object_or_404(Jogos, slug=self.kwargs['slug'])
         else:
-            self.object = get_object_or_404(Jogos, pk=self.kwargs['pk'], usuario=self.request.user)
+            self.object = get_object_or_404(Jogos, slug=self.kwargs['slug'], usuario=self.request.user)
         return self.object
 
 def enviar_email(request):

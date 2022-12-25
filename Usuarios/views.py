@@ -17,7 +17,7 @@ class UsuariosViews(SuccessMessageMixin, CreateView):
 class PerfilUpdateView(LoginRequiredMixin, TemplateView):
     template_name = 'cadastro/perfil_edit.html'
 
-    def post(self, request):
+    def post(self, request, username):
         profile = request.user.perfil
         form = PerfilForm(request.POST or None, instance=request.user)
         perfil = PerfilUpdate(data=request.POST, files=request.FILES, instance=profile)
